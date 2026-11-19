@@ -28,14 +28,14 @@
       font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system, sans-serif;
       background-color: var(--bg-page);
       color: var(--ink-main);
-      padding-bottom: 108px;
+      padding-bottom: 112px;
       line-height: 1.45;
     }
 
-    /* বড় ও মোটা ওয়েলকাম ব্যানার (কোনো বাড়তি ওভারলে লেখা ছাড়া) */
+    /* আরও বড় ও নিচের দিকে লম্বা ওয়েলকাম ব্যানার */
     .hero-banner {
       width: 100%;
-      min-height: 220px;
+      min-height: 360px;
       background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
       position: relative;
       overflow: hidden;
@@ -43,8 +43,8 @@
 
     .hero-banner img {
       width: 100%;
-      min-height: 220px;
-      max-height: 360px;
+      min-height: 360px;
+      max-height: 520px;
       object-fit: cover;
       display: block;
     }
@@ -62,8 +62,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 12px;
-      min-height: 40px;
+      margin-bottom: 14px;
+      min-height: 44px;
     }
 
     .back-nav-btn {
@@ -71,41 +71,41 @@
       border: 1.5px solid var(--border-soft);
       color: var(--maroon);
       font-weight: 800;
-      font-size: 1rem;
-      padding: 8px 14px;
+      font-size: 1.1rem;
+      padding: 9px 15px;
       border-radius: 10px;
       cursor: pointer;
     }
 
     .status-info {
-      font-size: 1rem;
-      color: var(--ink-muted);
-      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--ink-main);
+      font-weight: 800;
     }
 
     .section-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin: 14px 0 10px;
+      font-size: 1.65rem;
+      font-weight: 900;
+      margin: 16px 0 12px;
       color: var(--ink-main);
     }
 
-    /* ৩টি ক্যাটাগরি কার্ড */
+    /* এক লাইনে ২টি করে ক্যাটাগরি কার্ড (শাড়ি ও ব্লাউজ ওপরে, কুর্তি নিচে) */
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
     .cat-card {
       background: var(--bg-card);
       border: 1.5px solid var(--border-soft);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       text-align: center;
       cursor: pointer;
       padding: 0;
-      box-shadow: 0 2px 6px rgba(128, 0, 32, 0.06);
+      box-shadow: 0 3px 8px rgba(128, 0, 32, 0.08);
       transition: transform 0.15s ease, border-color 0.15s ease;
     }
 
@@ -120,15 +120,15 @@
 
     .cat-card img {
       width: 100%;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
     }
 
     .cat-label {
-      padding: 9px 4px;
-      font-size: 1.05rem;
-      font-weight: 800;
+      padding: 12px 6px;
+      font-size: 1.55rem;
+      font-weight: 900;
       color: var(--ink-main);
     }
 
@@ -136,18 +136,18 @@
     .filter-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 10px 0;
+      gap: 9px;
+      margin: 12px 0;
     }
 
     .filter-chip {
       background: #fff;
       border: 1.5px solid #d5c2c8;
       color: var(--ink-main);
-      padding: 8px 14px;
-      border-radius: 22px;
-      font-size: 0.95rem;
-      font-weight: 700;
+      padding: 10px 15px;
+      border-radius: 24px;
+      font-size: 1.25rem;
+      font-weight: 800;
       cursor: pointer;
     }
 
@@ -162,18 +162,18 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .product-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-soft);
+      border: 1.5px solid var(--border-soft);
       border-radius: 14px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
     }
 
     /* কার্ডে প্রথমে ১টি ছবি ও ওপরের দিকে '২টি ছবি আছে' ব্যাজ */
@@ -195,39 +195,50 @@
       position: absolute;
       top: 8px;
       right: 8px;
-      background: rgba(25, 16, 20, 0.78);
+      background: rgba(25, 16, 20, 0.8);
       color: #ffffff;
-      font-size: 0.76rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 12px;
-      letter-spacing: 0.2px;
     }
 
+    /* পুরো সাদা অংশই ক্লিকেবল সিলেক্ট এরিয়া */
     .prod-body {
       padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 7px;
+      flex: 1;
+      justify-content: space-between;
+      cursor: pointer;
+      background: var(--bg-card);
     }
 
-    .prod-meta {
-      font-size: 0.8rem;
+    .prod-code-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
       color: var(--ink-muted);
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    .prod-price-center {
+      text-align: center;
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--maroon);
+      line-height: 1.15;
+      padding: 2px 0;
     }
 
     .prod-type {
-      font-size: 1.22rem;
-      font-weight: 800;
+      font-size: 1.5rem;
+      font-weight: 900;
       color: var(--ink-main);
       line-height: 1.25;
-    }
-
-    .prod-price {
-      font-size: 1.32rem;
-      font-weight: 900;
-      color: var(--maroon);
+      text-align: center;
     }
 
     .select-btn {
@@ -236,7 +247,7 @@
       border: none;
       border-radius: 10px;
       padding: 11px 8px;
-      font-size: 1.08rem;
+      font-size: 1.12rem;
       font-weight: 800;
       cursor: pointer;
       background-color: var(--maroon);
@@ -248,10 +259,6 @@
       gap: 6px;
     }
 
-    .select-btn:active {
-      transform: scale(0.98);
-    }
-
     .select-btn.is-selected {
       background-color: var(--emerald-premium);
       color: var(--selected-ink);
@@ -260,7 +267,7 @@
     .red-tick {
       color: #ff2a2a;
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       text-shadow: 0 0 2px rgba(255, 255, 255, 0.85);
     }
 
@@ -285,7 +292,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #e5d8dc;
     }
 
@@ -301,7 +308,7 @@
 
     .lb-stage img {
       max-width: 100%;
-      max-height: 55vh;
+      max-height: 54vh;
       border-radius: 10px;
       object-fit: contain;
       background: #000;
@@ -343,7 +350,6 @@
       background: #fbbf24;
     }
 
-    /* নিচে স্পষ্ট ও বড় সাদা 'ফিরে যান' বাটন */
     .lb-back-bottom-wrap {
       display: flex;
       justify-content: center;
@@ -356,9 +362,9 @@
       color: var(--maroon-dark);
       border: none;
       border-radius: 10px;
-      padding: 11px 16px;
+      padding: 12px 16px;
       font-weight: 900;
-      font-size: 1.12rem;
+      font-size: 1.2rem;
       cursor: pointer;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
     }
@@ -375,7 +381,7 @@
       align-items: center;
       margin-bottom: 8px;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
     }
 
     /* নিচের ফিক্সড বার: ৫০% / ৫০% ভাগ */
@@ -403,7 +409,7 @@
       flex: 1;
       width: 50%;
       min-width: 0;
-      height: 62px;
+      height: 64px;
       border-radius: 10px;
       overflow: hidden;
       background: #fff6e5;
@@ -435,7 +441,7 @@
       background: var(--maroon);
       color: #fff;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 1.05rem;
       min-width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -447,7 +453,7 @@
     }
 
     .cart-note-text {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--ink-main);
       background: rgba(255, 255, 255, 0.88);
@@ -459,7 +465,7 @@
     .wa-img-btn {
       flex: 1;
       width: 50%;
-      height: 62px;
+      height: 64px;
       padding: 0;
       border: none;
       background: transparent;
@@ -485,7 +491,7 @@
       background: #25d366;
       color: #fff;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 1.05rem;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -495,7 +501,6 @@
       pointer-events: none;
     }
 
-    /* প্রথমবার সিলেক্ট হলে সামান্য ওপরে উঠে নড়ে আবার জায়গায় ফেরা */
     @keyframes waFirstAttention {
       0%   { transform: translateY(0) scale(1) rotate(0deg); }
       22%  { transform: translateY(-10px) scale(1.06) rotate(-2deg); }
@@ -540,7 +545,7 @@
     }
 
     .exit-msg {
-      font-size: 1.28rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--ink-main);
       margin: auto 0;
@@ -560,7 +565,7 @@
       border: none;
       border-radius: 12px;
       padding: 15px;
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 800;
       cursor: pointer;
     }
@@ -583,14 +588,14 @@
       padding: 24px 14px;
       text-align: center;
       color: var(--ink-muted);
-      font-size: 1rem;
+      font-size: 1.15rem;
       margin-top: 12px;
     }
   </style>
 </head>
 <body>
 
-  <!-- বড় ওয়েলকাম ব্যানার (কোনো বাড়তি ওভারলে লেখা ছাড়া) -->
+  <!-- বড় ও নিচের দিকে লম্বা ওয়েলকাম ব্যানার -->
   <header class="hero-banner">
     <img src="images/banner.jpg" alt="বঙ্গনারী ব্যানার" onerror="this.style.display='none'" />
   </header>
@@ -601,7 +606,7 @@
       <span id="statusInfo" class="status-info">ক্যাটাগরি বেছে নিন</span>
     </div>
 
-    <!-- ক্যাটাগরি গ্রিড -->
+    <!-- ক্যাটাগরি গ্রিড (ক্রম: শাড়ি, ব্লাউজ, কুর্তি -> ২ কলামে শাড়ি-ব্লাউজ ওপরে, কুর্তি নিচে) -->
     <section id="categorySection">
       <div class="section-title">ক্যাটাগরি</div>
       <div id="categoryGrid" class="category-grid"></div>
@@ -637,7 +642,6 @@
     <div>
       <div class="lb-dots" id="lbDots"></div>
 
-      <!-- ডট ও সিলেক্ট অংশের ঠিক ওপরে বড় সাদা 'ফিরে যান' বাটন -->
       <div class="lb-back-bottom-wrap">
         <button type="button" class="lb-back-btn" onclick="closeLightbox(true)">← ফিরে যান</button>
       </div>
@@ -696,13 +700,13 @@
       googleSheetCsvUrl: ""
     };
 
+    // শাড়ি ও ব্লাউজ প্রথম লাইনে, কুর্তি নিচের লাইনে
     const CATEGORIES = [
       { id: "saree", name: "শাড়ি", image: "images/cat-saree.jpg" },
-      { id: "kurti", name: "কুর্তি", image: "images/cat-kurti.jpg" },
-      { id: "blouse", name: "ব্লাউজ", image: "images/cat-blouse.jpg" }
+      { id: "blouse", name: "ব্লাউজ", image: "images/cat-blouse.jpg" },
+      { id: "kurti", name: "কুর্তি", image: "images/cat-kurti.jpg" }
     ];
 
-    // ক্যাটাগরি অনুযায়ী দামের ভাগ (শাড়ির জন্য ৩০০-১০০০, কুর্তি ও ব্লাউজের জন্য ২০০-৭০০)
     const PRICE_FILTERS_BY_CAT = {
       saree: [
         { id: "all", label: "সব দাম", max: Infinity },
@@ -733,7 +737,6 @@
       { id: "under-1000", label: "১০০০ টাকার মধ্যে", max: 1000 }
     ];
 
-    // নমুনা প্রোডাক্ট তালিকা
     const SAMPLE_PRODUCTS = [
       { serial: "0001", category: "saree", type: "জামদানি", price: 450 },
       { serial: "0002", category: "saree", type: "বেনারসি", price: 680 },
@@ -746,7 +749,7 @@
     ];
 
     // ==========================================
-    // ২. হালকা সাউন্ড এফেক্ট (Web Audio API — কোনো ভারী ফাইল নেই)
+    // ২. হালকা সাউন্ড এফেক্ট
     // ==========================================
     let audioCtx = null;
 
@@ -763,7 +766,6 @@
       return audioCtx;
     }
 
-    // প্রতিবার সিলেক্ট করলে মিষ্টি ও হালকা 'টিং' শব্দ
     function playTingSound() {
       try {
         const ctx = getAudioContext();
@@ -773,7 +775,7 @@
         const gain = ctx.createGain();
 
         osc.type = "sine";
-        osc.frequency.setValueAtTime(1046.5, now); // C6 মিষ্টি বেল নোট
+        osc.frequency.setValueAtTime(1046.5, now);
         osc.frequency.exponentialRampToValueAtTime(1318.5, now + 0.08);
 
         gain.gain.setValueAtTime(0.001, now);
@@ -787,7 +789,6 @@
       } catch (e) {}
     }
 
-    // প্রথমবার WhatsApp বাটন উঠে নড়ার সময় ছোট ও মৃদু নোটিফিকেশন শব্দ
     function playFirstWaNoticeSound() {
       try {
         const ctx = getAudioContext();
@@ -824,7 +825,6 @@
     const selectedMap = new Map();
     let hasPlayedFirstWaAnimation = false;
 
-    // Lightbox স্টেট
     let lbProduct = null;
     let lbSlideIndex = 0;
     let lbOpenedFromHistory = false;
@@ -975,7 +975,6 @@
         const card = document.createElement("article");
         card.className = "product-card";
 
-        // প্রথমে শুধু ১টি ছবি ও ওপরের দিকে '২টি ছবি আছে' ব্যাজ
         const imgWrap = document.createElement("div");
         imgWrap.className = "img-single-wrap";
         imgWrap.onclick = () => openLightbox(prod, 0);
@@ -992,30 +991,38 @@
         imgWrap.appendChild(mainImg);
         imgWrap.appendChild(badge);
 
+        // পুরো সাদা অংশ জুড়ে ক্লিক করলে সিলেক্ট হবে
         const body = document.createElement("div");
         body.className = "prod-body";
+        body.onclick = (e) => {
+          if (e.target.closest(".select-btn")) return;
+          toggleSelect(prod.serial);
+        };
 
-        const meta = document.createElement("div");
-        meta.className = "prod-meta";
-        meta.textContent = `কোড: ${prod.serial}`;
+        const codeRow = document.createElement("div");
+        codeRow.className = "prod-code-row";
+        codeRow.innerHTML = `<span>কোড</span><span>${escapeHtml(prod.serial)}</span>`;
+
+        const priceEl = document.createElement("div");
+        priceEl.className = "prod-price-center";
+        priceEl.textContent = `₹${toBengaliNumber(prod.price)}`;
 
         const typeEl = document.createElement("div");
         typeEl.className = "prod-type";
         typeEl.textContent = prod.type || "কালেকশন";
 
-        const priceEl = document.createElement("div");
-        priceEl.className = "prod-price";
-        priceEl.textContent = `₹${toBengaliNumber(prod.price)}`;
-
         const selBtn = document.createElement("button");
         selBtn.type = "button";
         selBtn.className = "select-btn";
         setButtonSelectedState(selBtn, isSelected);
-        selBtn.onclick = () => toggleSelect(prod.serial);
+        selBtn.onclick = (e) => {
+          e.stopPropagation();
+          toggleSelect(prod.serial);
+        };
 
-        body.appendChild(meta);
-        body.appendChild(typeEl);
+        body.appendChild(codeRow);
         body.appendChild(priceEl);
+        body.appendChild(typeEl);
         body.appendChild(selBtn);
 
         card.appendChild(imgWrap);
@@ -1087,7 +1094,6 @@
       document.getElementById("liveCountText").textContent =
         `${toBengaliNumber(count)}টি পছন্দ হয়েছে, আরও বেছে নিতে পারেন`;
 
-      // শুধু প্রথমবার সিলেক্ট করার সময় WhatsApp বাটন একটু ওপরে উঠে নড়বে ও মৃদু শব্দ হবে
       if (wasAdded && !hasPlayedFirstWaAnimation) {
         hasPlayedFirstWaAnimation = true;
         const waBtn = document.getElementById("waOrderBtn");
@@ -1101,7 +1107,7 @@
     }
 
     // ==========================================
-    // ৬. বড় করে দেখার ভিউ (Lightbox — ফিরে গেলে এক্সিট পপ-আপ আসবে না)
+    // ৬. বড় করে দেখার ভিউ (Lightbox)
     // ==========================================
     function openLightbox(prod, startIdx = 0) {
       lbProduct = prod;
@@ -1160,7 +1166,6 @@
       }
     }
 
-    // Lightbox-এ সোয়াইপ সাপোর্ট
     let touchStartX = 0;
     document.getElementById("lbStage").addEventListener("touchstart", (e) => {
       touchStartX = e.changedTouches[0].screenX;
@@ -1266,6 +1271,16 @@
           }
         }
       } catch (err) {}
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (m) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[m]));
     }
 
     // শুরুতে রেন্ডার
