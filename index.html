@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>বন্দনা শাড়ি — কালেকশন ক্যাটালগ</title>
+  <title>বঙ্গনারী — কালেকশন ক্যাটালগ</title>
   <style>
     :root {
       --bg-page: #faf7f5;
       --bg-card: #ffffff;
-      --ink-main: #23191e;
-      --ink-muted: #695860;
+      --ink-main: #1f161a;
+      --ink-muted: #65555c;
       --maroon: #800020;
-      --maroon-dark: #5c0017;
-      --selected-bg: #d97706;
+      --maroon-dark: #590016;
+      --emerald-premium: #0f6b4e;
       --selected-ink: #ffffff;
       --border-soft: #eadce0;
       --accent-soft: #fdf2f4;
@@ -28,13 +28,14 @@
       font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system, sans-serif;
       background-color: var(--bg-page);
       color: var(--ink-main);
-      padding-bottom: 96px;
+      padding-bottom: 108px;
       line-height: 1.45;
     }
 
-    /* ওয়েলকাম ব্যানার */
+    /* বড় ও মোটা ওয়েলকাম ব্যানার (কোনো বাড়তি ওভারলে লেখা ছাড়া) */
     .hero-banner {
       width: 100%;
+      min-height: 220px;
       background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
       position: relative;
       overflow: hidden;
@@ -42,82 +43,64 @@
 
     .hero-banner img {
       width: 100%;
-      max-height: 240px;
+      min-height: 220px;
+      max-height: 360px;
       object-fit: cover;
       display: block;
-    }
-
-    .banner-fallback {
-      padding: 22px 16px;
-      color: #fff;
-      text-align: center;
-      background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
-    }
-
-    .banner-fallback h1 {
-      margin: 0 0 6px;
-      font-size: 1.45rem;
-      letter-spacing: 0.5px;
-    }
-
-    .banner-fallback p {
-      margin: 0;
-      font-size: 0.9rem;
-      opacity: 0.92;
     }
 
     /* মূল কন্টেইনার */
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 12px;
+      padding: 14px;
     }
 
-    /* টপ নেভিগেশন / ব্রেডক্রাম্ব */
+    /* টপ নেভিগেশন */
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
       margin-bottom: 12px;
-      min-height: 36px;
+      min-height: 40px;
     }
 
     .back-nav-btn {
       background: #fff;
-      border: 1px solid var(--border-soft);
+      border: 1.5px solid var(--border-soft);
       color: var(--maroon);
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 7px 12px;
-      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 8px 14px;
+      border-radius: 10px;
       cursor: pointer;
     }
 
     .status-info {
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: var(--ink-muted);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .section-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin: 12px 0 8px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 14px 0 10px;
       color: var(--ink-main);
     }
 
-    /* ৩টি ছোট ক্যাটাগরি কার্ড (ভবিষ্যতে আরও যোগ করার উপযোগী গ্রিড) */
+    /* ৩টি ক্যাটাগরি কার্ড */
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
     }
 
     .cat-card {
       background: var(--bg-card);
       border: 1.5px solid var(--border-soft);
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       text-align: center;
       cursor: pointer;
@@ -143,9 +126,9 @@
     }
 
     .cat-label {
-      padding: 7px 4px;
-      font-size: 0.9rem;
-      font-weight: 700;
+      padding: 9px 4px;
+      font-size: 1.05rem;
+      font-weight: 800;
       color: var(--ink-main);
     }
 
@@ -153,18 +136,18 @@
     .filter-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 8px;
       margin: 10px 0;
     }
 
     .filter-chip {
       background: #fff;
-      border: 1px solid #d5c2c8;
+      border: 1.5px solid #d5c2c8;
       color: var(--ink-main);
-      padding: 7px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 22px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -178,61 +161,72 @@
     .product-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 12px;
     }
 
     .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border-soft);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .img-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
+    /* কার্ডে প্রথমে ১টি ছবি ও ওপরের দিকে '২টি ছবি আছে' ব্যাজ */
+    .img-single-wrap {
+      position: relative;
+      width: 100%;
       background: #f3ecee;
       cursor: pointer;
     }
 
-    .img-pair img {
+    .img-single-wrap img {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
       display: block;
     }
 
+    .two-photo-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(25, 16, 20, 0.78);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      letter-spacing: 0.2px;
+    }
+
     .prod-body {
-      padding: 8px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
 
     .prod-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--ink-muted);
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .prod-type {
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 1.22rem;
+      font-weight: 800;
       color: var(--ink-main);
+      line-height: 1.25;
     }
 
     .prod-price {
-      font-size: 0.98rem;
-      font-weight: 800;
+      font-size: 1.32rem;
+      font-weight: 900;
       color: var(--maroon);
     }
 
@@ -240,14 +234,18 @@
       margin-top: 4px;
       width: 100%;
       border: none;
-      border-radius: 8px;
-      padding: 9px 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
+      border-radius: 10px;
+      padding: 11px 8px;
+      font-size: 1.08rem;
+      font-weight: 800;
       cursor: pointer;
       background-color: var(--maroon);
       color: #ffffff;
       transition: background-color 0.2s ease, transform 0.1s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .select-btn:active {
@@ -255,15 +253,22 @@
     }
 
     .select-btn.is-selected {
-      background-color: var(--selected-bg);
+      background-color: var(--emerald-premium);
       color: var(--selected-ink);
     }
 
-    /* বড় করে দেখার ভিউ (Lightbox / Modal) */
+    .red-tick {
+      color: #ff2a2a;
+      font-weight: 900;
+      font-size: 1.15rem;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.85);
+    }
+
+    /* বড় করে দেখার ভিউ (Lightbox / Modal) */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(18, 12, 15, 0.94);
+      background: rgba(15, 10, 13, 0.96);
       z-index: 900;
       display: none;
       flex-direction: column;
@@ -280,17 +285,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .lb-back-btn {
-      background: #ffffff;
-      color: var(--maroon-dark);
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-weight: 800;
-      font-size: 0.92rem;
-      cursor: pointer;
+      font-size: 0.95rem;
+      color: #e5d8dc;
     }
 
     .lb-stage {
@@ -299,13 +295,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 10px 0;
+      margin: 8px 0;
       overflow: hidden;
     }
 
     .lb-stage img {
       max-width: 100%;
-      max-height: 62vh;
+      max-height: 55vh;
       border-radius: 10px;
       object-fit: contain;
       background: #000;
@@ -315,13 +311,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.9);
       color: #111;
       border: none;
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      font-size: 1.2rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1.35rem;
       font-weight: bold;
       cursor: pointer;
     }
@@ -332,13 +328,13 @@
     .lb-dots {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .lb-dot {
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.35);
     }
@@ -347,8 +343,28 @@
       background: #fbbf24;
     }
 
+    /* নিচে স্পষ্ট ও বড় সাদা 'ফিরে যান' বাটন */
+    .lb-back-bottom-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .lb-back-btn {
+      width: 100%;
+      background: #ffffff;
+      color: var(--maroon-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-weight: 900;
+      font-size: 1.12rem;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    }
+
     .lb-footer {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 12px;
     }
@@ -358,10 +374,11 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 1.15rem;
     }
 
-    /* নিচের ফিক্সড বার (ইমেজ-বাটন ও লাইভ কাউন্ট) */
+    /* নিচের ফিক্সড বার: ৫০% / ৫০% ভাগ */
     .sticky-cart-bar {
       position: fixed;
       left: 0;
@@ -369,11 +386,10 @@
       bottom: 0;
       background: #ffffff;
       border-top: 2px solid var(--border-soft);
-      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.14);
       padding: 8px 10px;
       display: none;
       align-items: center;
-      justify-content: space-between;
       gap: 8px;
       z-index: 800;
     }
@@ -384,16 +400,17 @@
 
     .cart-note-box {
       position: relative;
-      flex: 1.25;
+      flex: 1;
+      width: 50%;
       min-width: 0;
-      height: 54px;
-      border-radius: 8px;
+      height: 62px;
+      border-radius: 10px;
       overflow: hidden;
       background: #fff6e5;
       border: 1px solid #f3c677;
       display: flex;
       align-items: center;
-      padding: 0 10px;
+      padding: 0 8px;
     }
 
     .cart-note-box img.note-bg {
@@ -410,42 +427,44 @@
       z-index: 1;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
     }
 
     .live-count-badge {
       background: var(--maroon);
       color: #fff;
-      font-weight: 800;
-      font-size: 0.95rem;
-      min-width: 28px;
-      height: 28px;
+      font-weight: 900;
+      font-size: 1rem;
+      min-width: 30px;
+      height: 30px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 0 6px;
+      flex-shrink: 0;
     }
 
     .cart-note-text {
-      font-size: 0.82rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      font-weight: 800;
       color: var(--ink-main);
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 3px 6px;
       border-radius: 6px;
+      line-height: 1.25;
     }
 
     .wa-img-btn {
-      flex: 0.9;
-      max-width: 155px;
-      height: 54px;
+      flex: 1;
+      width: 50%;
+      height: 62px;
       padding: 0;
       border: none;
-      background: #25d366;
-      border-radius: 8px;
-      overflow: hidden;
+      background: transparent;
+      border-radius: 10px;
+      overflow: visible;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -456,25 +475,45 @@
     .wa-img-btn img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
     .wa-fallback-label {
       position: absolute;
+      inset: 0;
+      background: #25d366;
       color: #fff;
-      font-weight: 800;
-      font-size: 0.82rem;
-      padding: 0 6px;
+      font-weight: 900;
+      font-size: 1rem;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
       text-align: center;
       pointer-events: none;
     }
 
-    /* এক্সিট কনফার্মেশন পপ-আপ (মোবাইলের বড় অংশ জুড়ে) */
+    /* প্রথমবার সিলেক্ট হলে সামান্য ওপরে উঠে নড়ে আবার জায়গায় ফেরা */
+    @keyframes waFirstAttention {
+      0%   { transform: translateY(0) scale(1) rotate(0deg); }
+      22%  { transform: translateY(-10px) scale(1.06) rotate(-2deg); }
+      40%  { transform: translateY(-10px) scale(1.06) rotate(2.5deg); }
+      58%  { transform: translateY(-9px) scale(1.05) rotate(-2deg); }
+      76%  { transform: translateY(-6px) scale(1.03) rotate(1.5deg); }
+      100% { transform: translateY(0) scale(1) rotate(0deg); }
+    }
+
+    .wa-img-btn.first-pop-shake {
+      animation: waFirstAttention 0.75s ease-in-out;
+    }
+
+    /* এক্সিট কনফার্মেশন পপ-আপ */
     .exit-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
+      background: rgba(0, 0, 0, 0.74);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -501,11 +540,11 @@
     }
 
     .exit-msg {
-      font-size: 1.25rem;
+      font-size: 1.28rem;
       font-weight: 800;
       color: var(--ink-main);
       margin: auto 0;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .exit-actions {
@@ -520,8 +559,8 @@
       color: #fff;
       border: none;
       border-radius: 12px;
-      padding: 14px;
-      font-size: 1.05rem;
+      padding: 15px;
+      font-size: 1.12rem;
       font-weight: 800;
       cursor: pointer;
     }
@@ -531,8 +570,8 @@
       color: var(--ink-main);
       border: 1px solid #d8c2c8;
       border-radius: 12px;
-      padding: 12px;
-      font-size: 1rem;
+      padding: 13px;
+      font-size: 1.05rem;
       font-weight: 700;
       cursor: pointer;
     }
@@ -544,19 +583,16 @@
       padding: 24px 14px;
       text-align: center;
       color: var(--ink-muted);
+      font-size: 1rem;
       margin-top: 12px;
     }
   </style>
 </head>
 <body>
 
-  <!-- ওয়েলকাম ব্যানার -->
+  <!-- বড় ওয়েলকাম ব্যানার (কোনো বাড়তি ওভারলে লেখা ছাড়া) -->
   <header class="hero-banner">
-    <img src="images/banner.jpg" alt="বন্দনা শাড়ি" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
-    <div class="banner-fallback">
-      <h1>বন্দনা শাড়ি</h1>
-      <p>পছন্দের শাড়ি, কুর্তি ও ব্লাউজ বেছে সরাসরি WhatsApp-এ অর্ডার করুন</p>
-    </div>
+    <img src="images/banner.jpg" alt="বঙ্গনারী ব্যানার" onerror="this.style.display='none'" />
   </header>
 
   <main class="container">
@@ -565,7 +601,7 @@
       <span id="statusInfo" class="status-info">ক্যাটাগরি বেছে নিন</span>
     </div>
 
-    <!-- ক্যাটাগরি গ্রিড (ভবিষ্যতে CATEGORIES অ্যারেতে নতুন ক্যাটাগরি যোগ করা যাবে) -->
+    <!-- ক্যাটাগরি গ্রিড -->
     <section id="categorySection">
       <div class="section-title">ক্যাটাগরি</div>
       <div id="categoryGrid" class="category-grid"></div>
@@ -579,27 +615,33 @@
 
     <!-- ভেতরের ধরন / সাব-ক্যাটাগরি ও প্রোডাক্ট তালিকা -->
     <section id="productSection" style="display:none;">
-      <div class="section-title" id="typeHeading">ধরন অনুযায়ী দেখুন</div>
+      <div class="section-title" id="typeHeading">ধরন অনুযায়ী দেখুন</div>
       <div id="typeChips" class="filter-strip"></div>
       <div id="productGrid" class="product-grid"></div>
     </section>
   </main>
 
-  <!-- বড় করে দেখার ভিউ (Lightbox) -->
+  <!-- বড় করে দেখার ভিউ (Lightbox) -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
     <div class="lb-top">
-      <button class="lb-back-btn" onclick="closeLightbox(true)">← ফিরে যান</button>
       <span id="lbSerial" style="font-weight:700;"></span>
+      <span id="lbSlideCounter" style="font-weight:700;">১ / ২</span>
     </div>
 
     <div class="lb-stage" id="lbStage">
       <button class="lb-nav-btn prev" onclick="changeLbSlide(-1)" aria-label="আগের ছবি">‹</button>
-      <img id="lbImg" src="" alt="প্রোডাক্টের বড় ছবি" />
+      <img id="lbImg" src="" alt="প্রোডাক্টের বড় ছবি" />
       <button class="lb-nav-btn next" onclick="changeLbSlide(1)" aria-label="পরের ছবি">›</button>
     </div>
 
     <div>
       <div class="lb-dots" id="lbDots"></div>
+
+      <!-- ডট ও সিলেক্ট অংশের ঠিক ওপরে বড় সাদা 'ফিরে যান' বাটন -->
+      <div class="lb-back-bottom-wrap">
+        <button type="button" class="lb-back-btn" onclick="closeLightbox(true)">← ফিরে যান</button>
+      </div>
+
       <div class="lb-footer">
         <div class="lb-info-row">
           <span id="lbTitle"></span>
@@ -610,18 +652,23 @@
     </div>
   </div>
 
-  <!-- নিচের ফিক্সড বার -->
+  <!-- নিচের ফিক্সড বার (৫০% / ৫০%) -->
   <div id="stickyCartBar" class="sticky-cart-bar">
     <div class="cart-note-box">
       <img class="note-bg" src="images/cart-note.jpg" alt="" onerror="this.style.display='none'" />
       <div class="cart-note-overlay">
         <span id="liveCountBadge" class="live-count-badge">০</span>
-        <span id="liveCountText" class="cart-note-text">পছন্দ হয়েছে, আরও বেছে নিতে পারেন</span>
+        <span id="liveCountText" class="cart-note-text">পছন্দ হয়েছে, আরও বেছে নিতে পারেন</span>
       </div>
     </div>
 
-    <button class="wa-img-btn" onclick="sendOrderToWhatsApp()" aria-label="WhatsApp-এ অর্ডার প্লেস করুন">
-      <img src="images/wa-btn.jpg" alt="WhatsApp-এ অর্ডার প্লেস করুন" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+    <button id="waOrderBtn" type="button" class="wa-img-btn" onclick="sendOrderToWhatsApp()" aria-label="WhatsApp-এ অর্ডার প্লেস করুন">
+      <img
+        src="images/wa-btn.png"
+        alt="WhatsApp-এ অর্ডার প্লেস করুন"
+        onload="if (this.nextElementSibling) this.nextElementSibling.style.display='none';"
+        onerror="this.style.display='none';"
+      />
       <span class="wa-fallback-label">WhatsApp-এ অর্ডার</span>
     </button>
   </div>
@@ -630,67 +677,163 @@
   <div id="exitModal" class="exit-modal" role="dialog" aria-modal="true">
     <div class="exit-card">
       <div class="exit-msg">
-        আপনি যদি এখন বেরিয়ে যান, তবে সিলেক্ট করা প্রোডাক্টগুলো বাতিল হয়ে যাবে।
+        আপনি যদি এখন বেরিয়ে যান, তবে সিলেক্ট করা প্রোডাক্টগুলো বাতিল হয়ে যাবে।
       </div>
       <div class="exit-actions">
-        <button class="btn-stay" onclick="stayOnSite()">থেকে যাবো</button>
-        <button class="btn-leave" onclick="confirmLeaveSite()">বেরিয়ে যাবো</button>
+        <button type="button" class="btn-stay" onclick="stayOnSite()">থেকে যাবো</button>
+        <button type="button" class="btn-leave" onclick="confirmLeaveSite()">বেরিয়ে যাবো</button>
       </div>
     </div>
   </div>
 
   <script>
     // ==========================================
-    // ১. কনফিগারেশন (এখান থেকেই নম্বর ও শিট সেট করবেন)
+    // ১. কনফিগারেশন
     // ==========================================
     const CONFIG = {
-      whatsappNumber: "919398452384", // আপনার দেওয়া নম্বর 9398452384 (দেশ কোডসহ)
+      whatsappNumber: "919398452384",
       imageFolder: "images",
-      // পাবলিশ করা Google Sheet-এর CSV লিংক থাকলে নিচে বসান (ফাঁকা রাখলে নিচের ডেমো ডেটা চলবে)
       googleSheetCsvUrl: ""
     };
 
-    // ভবিষ্যতে নতুন ক্যাটাগরি যোগ করতে চাইলে এখানে শুধু আরেকটি অবজেক্ট যোগ করুন
     const CATEGORIES = [
       { id: "saree", name: "শাড়ি", image: "images/cat-saree.jpg" },
       { id: "kurti", name: "কুর্তি", image: "images/cat-kurti.jpg" },
       { id: "blouse", name: "ব্লাউজ", image: "images/cat-blouse.jpg" }
     ];
 
-    const PRICE_FILTERS = [
+    // ক্যাটাগরি অনুযায়ী দামের ভাগ (শাড়ির জন্য ৩০০-১০০০, কুর্তি ও ব্লাউজের জন্য ২০০-৭০০)
+    const PRICE_FILTERS_BY_CAT = {
+      saree: [
+        { id: "all", label: "সব দাম", max: Infinity },
+        { id: "under-300", label: "৩০০ টাকার মধ্যে", max: 300 },
+        { id: "under-500", label: "৫০০ টাকার মধ্যে", max: 500 },
+        { id: "under-700", label: "৭০০ টাকার মধ্যে", max: 700 },
+        { id: "under-1000", label: "১০০০ টাকার মধ্যে", max: 1000 }
+      ],
+      kurti: [
+        { id: "all", label: "সব দাম", max: Infinity },
+        { id: "under-200", label: "২০০ টাকার মধ্যে", max: 200 },
+        { id: "under-500", label: "৫০০ টাকার মধ্যে", max: 500 },
+        { id: "under-700", label: "৭০০ টাকার মধ্যে", max: 700 }
+      ],
+      blouse: [
+        { id: "all", label: "সব দাম", max: Infinity },
+        { id: "under-200", label: "২০০ টাকার মধ্যে", max: 200 },
+        { id: "under-500", label: "৫০০ টাকার মধ্যে", max: 500 },
+        { id: "under-700", label: "৭০০ টাকার মধ্যে", max: 700 }
+      ]
+    };
+
+    const DEFAULT_PRICE_FILTERS = [
       { id: "all", label: "সব দাম", max: Infinity },
-      { id: "under-500", label: "Under 500", max: 500 },
-      { id: "under-600", label: "Under 600", max: 600 },
-      { id: "under-700", label: "Under 700", max: 700 },
-      { id: "under-1000", label: "Under 1000", max: 1000 }
+      { id: "under-300", label: "৩০০ টাকার মধ্যে", max: 300 },
+      { id: "under-500", label: "৫০০ টাকার মধ্যে", max: 500 },
+      { id: "under-700", label: "৭০০ টাকার মধ্যে", max: 700 },
+      { id: "under-1000", label: "১০০০ টাকার মধ্যে", max: 1000 }
     ];
 
-    // নমুনা প্রোডাক্ট তালিকা (Google Sheet যুক্ত করলে সেখান থেকে ডেটা আসবে)
+    // নমুনা প্রোডাক্ট তালিকা
     const SAMPLE_PRODUCTS = [
       { serial: "0001", category: "saree", type: "জামদানি", price: 450 },
       { serial: "0002", category: "saree", type: "বেনারসি", price: 680 },
-      { serial: "0003", category: "saree", type: "জামদানি", price: 550 },
+      { serial: "0003", category: "saree", type: "জামদানি", price: 290 },
       { serial: "0004", category: "saree", type: "তাঁত", price: 890 },
-      { serial: "0005", category: "kurti", type: "কটন কুর্তি", price: 390 },
-      { serial: "0006", category: "kurti", type: "রেয়ন কুর্তি", price: 590 },
-      { serial: "0007", category: "blouse", type: "কটন ব্লাউজ", price: 280 },
+      { serial: "0005", category: "kurti", type: "কটন কুর্তি", price: 190 },
+      { serial: "0006", category: "kurti", type: "রেয়ন কুর্তি", price: 480 },
+      { serial: "0007", category: "blouse", type: "কটন ব্লাউজ", price: 180 },
       { serial: "0008", category: "blouse", type: "ডিজাইনার ব্লাউজ", price: 490 }
     ];
 
     // ==========================================
-    // ২. সেশন স্টেট (রিলোড করলে কার্ট রিসেট হবে)
+    // ২. হালকা সাউন্ড এফেক্ট (Web Audio API — কোনো ভারী ফাইল নেই)
+    // ==========================================
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume().catch(() => {});
+      }
+      return audioCtx;
+    }
+
+    // প্রতিবার সিলেক্ট করলে মিষ্টি ও হালকা 'টিং' শব্দ
+    function playTingSound() {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(1046.5, now); // C6 মিষ্টি বেল নোট
+        osc.frequency.exponentialRampToValueAtTime(1318.5, now + 0.08);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.06, now + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } catch (e) {}
+    }
+
+    // প্রথমবার WhatsApp বাটন উঠে নড়ার সময় ছোট ও মৃদু নোটিফিকেশন শব্দ
+    function playFirstWaNoticeSound() {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+
+        [880, 1174.66].forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const start = now + idx * 0.09;
+
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(freq, start);
+
+          gain.gain.setValueAtTime(0.001, start);
+          gain.gain.linearRampToValueAtTime(0.055, start + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.22);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.24);
+        });
+      } catch (e) {}
+    }
+
+    // ==========================================
+    // ৩. সেশন স্টেট
     // ==========================================
     let allProducts = [...SAMPLE_PRODUCTS];
     let currentCategory = null;
-    let currentPriceFilter = PRICE_FILTERS[0];
+    let currentPriceFilter = DEFAULT_PRICE_FILTERS[0];
     let currentTypeFilter = "all";
-    const selectedMap = new Map(); // serial -> product object
+    const selectedMap = new Map();
+    let hasPlayedFirstWaAnimation = false;
 
     // Lightbox স্টেট
     let lbProduct = null;
     let lbSlideIndex = 0;
     let lbOpenedFromHistory = false;
+    let ignoreNextPopstate = false;
     let exitPromptArmed = false;
+
+    function getActivePriceFilters() {
+      return PRICE_FILTERS_BY_CAT[currentCategory] || DEFAULT_PRICE_FILTERS;
+    }
 
     function getProductImages(serial) {
       return [
@@ -704,8 +847,18 @@
       return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
     }
 
+    function setButtonSelectedState(btn, isSelected) {
+      if (!btn) return;
+      btn.classList.toggle("is-selected", isSelected);
+      if (isSelected) {
+        btn.innerHTML = `<span class="red-tick">✔</span> পছন্দ করা হয়েছে`;
+      } else {
+        btn.textContent = "পছন্দ করুন";
+      }
+    }
+
     // ==========================================
-    // ৩. রেন্ডারিং ফাংশনসমূহ
+    // ৪. রেন্ডারিং ফাংশনসমূহ
     // ==========================================
     function renderCategories() {
       const grid = document.getElementById("categoryGrid");
@@ -736,7 +889,8 @@
 
     function selectCategory(catId) {
       currentCategory = catId;
-      currentPriceFilter = PRICE_FILTERS[0];
+      const filters = getActivePriceFilters();
+      currentPriceFilter = filters[0];
       currentTypeFilter = "all";
 
       const catObj = CATEGORIES.find((c) => c.id === catId);
@@ -753,7 +907,8 @@
     function renderPriceChips() {
       const container = document.getElementById("priceChips");
       container.innerHTML = "";
-      PRICE_FILTERS.forEach((pf) => {
+      const filters = getActivePriceFilters();
+      filters.forEach((pf) => {
         const chip = document.createElement("button");
         chip.type = "button";
         chip.className = "filter-chip" + (currentPriceFilter.id === pf.id ? " active" : "");
@@ -820,24 +975,29 @@
         const card = document.createElement("article");
         card.className = "product-card";
 
-        const pairDiv = document.createElement("div");
-        pairDiv.className = "img-pair";
-        pairDiv.onclick = () => openLightbox(prod, 0);
+        // প্রথমে শুধু ১টি ছবি ও ওপরের দিকে '২টি ছবি আছে' ব্যাজ
+        const imgWrap = document.createElement("div");
+        imgWrap.className = "img-single-wrap";
+        imgWrap.onclick = () => openLightbox(prod, 0);
 
-        imgs.forEach((src, idx) => {
-          const im = document.createElement("img");
-          im.src = src;
-          im.alt = `${prod.serial} ছবি ${idx + 1}`;
-          im.loading = "lazy";
-          pairDiv.appendChild(im);
-        });
+        const mainImg = document.createElement("img");
+        mainImg.src = imgs[0];
+        mainImg.alt = `${prod.type} (${prod.serial})`;
+        mainImg.loading = "lazy";
+
+        const badge = document.createElement("span");
+        badge.className = "two-photo-badge";
+        badge.textContent = "২টি ছবি আছে";
+
+        imgWrap.appendChild(mainImg);
+        imgWrap.appendChild(badge);
 
         const body = document.createElement("div");
         body.className = "prod-body";
 
         const meta = document.createElement("div");
         meta.className = "prod-meta";
-        meta.innerHTML = `<span>কোড: ${escapeHtml(prod.serial)}</span><span>২টি ছবি</span>`;
+        meta.textContent = `কোড: ${prod.serial}`;
 
         const typeEl = document.createElement("div");
         typeEl.className = "prod-type";
@@ -849,8 +1009,8 @@
 
         const selBtn = document.createElement("button");
         selBtn.type = "button";
-        selBtn.className = "select-btn" + (isSelected ? " is-selected" : "");
-        selBtn.textContent = isSelected ? "✓ পছন্দ করা হয়েছে" : "পছন্দ করুন";
+        selBtn.className = "select-btn";
+        setButtonSelectedState(selBtn, isSelected);
         selBtn.onclick = () => toggleSelect(prod.serial);
 
         body.appendChild(meta);
@@ -858,7 +1018,7 @@
         body.appendChild(priceEl);
         body.appendChild(selBtn);
 
-        card.appendChild(pairDiv);
+        card.appendChild(imgWrap);
         card.appendChild(body);
         grid.appendChild(card);
       });
@@ -874,7 +1034,7 @@
     }
 
     // ==========================================
-    // ৪. পছন্দ করা ও নিচের ফিক্সড বার আপডেট
+    // ৫. পছন্দ করা, সাউন্ড ও নিচের ফিক্সড বার আপডেট
     // ==========================================
     function toggleSelect(serial) {
       const prod = allProducts.find((p) => p.serial === serial);
@@ -882,18 +1042,18 @@
 
       if (selectedMap.has(serial)) {
         selectedMap.delete(serial);
+        syncSelectButtonsUI();
+        updateStickyCartBar(false);
       } else {
         selectedMap.set(serial, prod);
         armExitGuard();
+        playTingSound();
+        syncSelectButtonsUI();
+        updateStickyCartBar(true);
       }
-
-      syncSelectButtonsUI();
-      updateStickyCartBar();
     }
 
     function syncSelectButtonsUI() {
-      const buttons = document.querySelectorAll(".select-btn[data-serial], .product-card");
-      // প্রোডাক্ট কার্ডের বাটন আপডেট
       const cards = document.querySelectorAll(".product-card");
       const currentList =
         currentTypeFilter === "all"
@@ -904,21 +1064,16 @@
         const prod = currentList[idx];
         if (!prod) return;
         const btn = card.querySelector(".select-btn");
-        const active = selectedMap.has(prod.serial);
-        btn.classList.toggle("is-selected", active);
-        btn.textContent = active ? "✓ পছন্দ করা হয়েছে" : "পছন্দ করুন";
+        setButtonSelectedState(btn, selectedMap.has(prod.serial));
       });
 
-      // Lightbox-এর বাটন আপডেট
       if (lbProduct) {
         const lbBtn = document.getElementById("lbSelectBtn");
-        const active = selectedMap.has(lbProduct.serial);
-        lbBtn.classList.toggle("is-selected", active);
-        lbBtn.textContent = active ? "✓ পছন্দ করা হয়েছে" : "পছন্দ করুন";
+        setButtonSelectedState(lbBtn, selectedMap.has(lbProduct.serial));
       }
     }
 
-    function updateStickyCartBar() {
+    function updateStickyCartBar(wasAdded) {
       const bar = document.getElementById("stickyCartBar");
       const count = selectedMap.size;
 
@@ -930,11 +1085,23 @@
       bar.classList.add("visible");
       document.getElementById("liveCountBadge").textContent = toBengaliNumber(count);
       document.getElementById("liveCountText").textContent =
-        `${toBengaliNumber(count)}টি পছন্দ হয়েছে, আরও বেছে নিতে পারেন`;
+        `${toBengaliNumber(count)}টি পছন্দ হয়েছে, আরও বেছে নিতে পারেন`;
+
+      // শুধু প্রথমবার সিলেক্ট করার সময় WhatsApp বাটন একটু ওপরে উঠে নড়বে ও মৃদু শব্দ হবে
+      if (wasAdded && !hasPlayedFirstWaAnimation) {
+        hasPlayedFirstWaAnimation = true;
+        const waBtn = document.getElementById("waOrderBtn");
+        waBtn.classList.remove("first-pop-shake");
+        void waBtn.offsetWidth;
+        waBtn.classList.add("first-pop-shake");
+        setTimeout(() => {
+          playFirstWaNoticeSound();
+        }, 120);
+      }
     }
 
     // ==========================================
-    // ৫. বড় করে দেখার ভিউ (Lightbox + মোবাইল ব্যাক)
+    // ৬. বড় করে দেখার ভিউ (Lightbox — ফিরে গেলে এক্সিট পপ-আপ আসবে না)
     // ==========================================
     function openLightbox(prod, startIdx = 0) {
       lbProduct = prod;
@@ -961,6 +1128,9 @@
       const imgEl = document.getElementById("lbImg");
       imgEl.src = imgs[lbSlideIndex] || imgs[0];
 
+      document.getElementById("lbSlideCounter").textContent =
+        `${toBengaliNumber(lbSlideIndex + 1)} / ${toBengaliNumber(imgs.length)}`;
+
       const dotsWrap = document.getElementById("lbDots");
       dotsWrap.innerHTML = "";
       imgs.forEach((_, i) => {
@@ -985,11 +1155,12 @@
 
       if (fromButton && lbOpenedFromHistory) {
         lbOpenedFromHistory = false;
+        ignoreNextPopstate = true;
         history.back();
       }
     }
 
-    // Lightbox-এ সোয়াইপ সাপোর্ট
+    // Lightbox-এ সোয়াইপ সাপোর্ট
     let touchStartX = 0;
     document.getElementById("lbStage").addEventListener("touchstart", (e) => {
       touchStartX = e.changedTouches[0].screenX;
@@ -1003,7 +1174,7 @@
     }, { passive: true });
 
     // ==========================================
-    // ৬. WhatsApp অর্ডার পাঠানো
+    // ৭. WhatsApp অর্ডার পাঠানো
     // ==========================================
     function sendOrderToWhatsApp() {
       if (selectedMap.size === 0) return;
@@ -1028,7 +1199,7 @@
     }
 
     // ==========================================
-    // ৭. এক্সিট গার্ড পপ-আপ
+    // ৮. এক্সিট গার্ড পপ-আপ
     // ==========================================
     function armExitGuard() {
       if (!exitPromptArmed) {
@@ -1038,6 +1209,11 @@
     }
 
     window.addEventListener("popstate", () => {
+      if (ignoreNextPopstate) {
+        ignoreNextPopstate = false;
+        return;
+      }
+
       const lb = document.getElementById("lightbox");
       if (lb.classList.contains("open")) {
         lbOpenedFromHistory = false;
@@ -1059,12 +1235,12 @@
       selectedMap.clear();
       exitPromptArmed = false;
       document.getElementById("exitModal").classList.remove("open");
-      updateStickyCartBar();
+      updateStickyCartBar(false);
       history.go(-2);
     }
 
     // ==========================================
-    // ৮. Google Sheet CSV লোডার (ঐচ্ছিক)
+    // ৯. Google Sheet CSV লোডার
     // ==========================================
     async function loadFromGoogleSheetIfConfigured() {
       if (!CONFIG.googleSheetCsvUrl) return;
@@ -1089,19 +1265,7 @@
             renderTypeChipsAndProducts();
           }
         }
-      } catch (err) {
-        // নেটওয়ার্ক সমস্যা হলে নমুনা ডেটা দিয়েই সচল থাকবে
-      }
-    }
-
-    function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, (m) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[m]));
+      } catch (err) {}
     }
 
     // শুরুতে রেন্ডার
