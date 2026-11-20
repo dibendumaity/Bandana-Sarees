@@ -17,6 +17,7 @@
       --selected-ink: #ffffff;
       --border-soft: #eadce0;
       --accent-soft: #fdf2f4;
+      --img-frame-bg: #f6efe9;
     }
 
     * {
@@ -47,9 +48,10 @@
     .hero-banner img {
       width: 100%;
       height: auto;
-      max-height: 680px;
-      object-fit: cover;
+      max-height: 720px;
+      object-fit: contain;
       display: block;
+      margin: 0 auto;
     }
 
     /* মূল কন্টেইনার */
@@ -100,10 +102,10 @@
       gap: 16px;
     }
 
-    /* ২. যেকোনো একটি সিলেক্ট করলে: বাম পাশে ১টি বড় (1.45fr) ও ডান পাশে ২টি ছোট উপর-নিচে (1fr) */
+    /* ২. যেকোনো একটি সিলেক্ট করলে: বাম পাশে ১টি বড় ও ডান পাশে ২টি ছোট উপর-নিচে */
     .category-grid.is-split {
-      grid-template-columns: 1.45fr 1fr;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: 1.35fr 1fr;
+      grid-template-rows: repeat(2, minmax(170px, auto));
       gap: 16px;
       align-items: stretch;
     }
@@ -127,10 +129,12 @@
       transform: scale(0.985);
     }
 
+    /* ক্যাটাগরি ছবি: ক্রপ না হয়ে পুরো ছবি দেখাবে */
     .cat-card img {
       width: 100%;
       aspect-ratio: 4 / 3;
-      object-fit: cover;
+      object-fit: contain;
+      background: var(--img-frame-bg);
       display: block;
     }
 
@@ -153,8 +157,12 @@
 
     .category-grid.is-split .cat-card.active img {
       flex: 1;
+      width: 100%;
+      height: auto;
+      max-height: 360px;
       aspect-ratio: 4 / 3;
-      max-height: 310px;
+      object-fit: contain;
+      background: var(--img-frame-bg);
     }
 
     .category-grid.is-split .cat-card.active .cat-label {
@@ -173,17 +181,21 @@
     }
 
     .category-grid.is-split .cat-card:not(.active) img {
-      width: 46%;
+      width: 190px;
+      min-width: 190px;
       height: 100%;
-      min-height: 132px;
+      min-height: 155px;
       aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: var(--img-frame-bg);
       flex-shrink: 0;
     }
 
     .category-grid.is-split .cat-card:not(.active) .cat-label {
       flex: 1;
-      font-size: 1.5rem;
-      padding: 10px 16px;
+      height: 100%;
+      font-size: 1.55rem;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -191,7 +203,7 @@
 
     .category-grid.is-split .cat-card:not(.active) .cat-label::after {
       content: "›";
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: var(--maroon);
       font-weight: 900;
     }
@@ -221,11 +233,11 @@
       border-color: var(--maroon);
     }
 
-    /* প্রোডাক্ট গ্রিড: ৩ কলামে বড় ছবিসহ সাজানো */
+    /* প্রোডাক্ট গ্রিড: এক লাইনে ২টি করে বড় প্রোডাক্ট কার্ড */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
       margin-top: 16px;
     }
 
@@ -240,7 +252,7 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
     }
 
-    /* প্রোডাক্টের ছবি বড় রাখা হয়েছে */
+    /* প্রোডাক্টের ছবি বড় ও স্পষ্ট */
     .img-single-wrap {
       position: relative;
       width: 100%;
@@ -261,15 +273,15 @@
       right: 10px;
       background: rgba(25, 16, 20, 0.82);
       color: #ffffff;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 12px;
     }
 
     /* সাদা কার্ডের লেখার অংশ: উপর-নিচ থেকে কমপ্রেস করে সরু ও পরিপাটি করা হয়েছে */
     .prod-body {
-      padding: 7px 10px 8px;
+      padding: 7px 12px 8px;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -282,19 +294,19 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 6px;
+      gap: 8px;
       line-height: 1.15;
     }
 
     .prod-code-text {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--ink-muted);
       font-weight: 800;
       white-space: nowrap;
     }
 
     .prod-price-inline {
-      font-size: 1.65rem;
+      font-size: 1.75rem;
       font-weight: 900;
       color: var(--maroon);
       line-height: 1.1;
@@ -302,7 +314,7 @@
     }
 
     .prod-type {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: var(--ink-main);
       line-height: 1.2;
@@ -317,8 +329,8 @@
       width: 100%;
       border: none;
       border-radius: 9px;
-      padding: 7px 8px;
-      font-size: 1.08rem;
+      padding: 8px 10px;
+      font-size: 1.12rem;
       font-weight: 800;
       cursor: pointer;
       background-color: var(--maroon);
@@ -339,7 +351,7 @@
     .red-tick {
       color: #ff2a2a;
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       text-shadow: 0 0 2px rgba(255, 255, 255, 0.85);
     }
 
@@ -967,7 +979,6 @@
       grid.innerHTML = "";
       grid.classList.toggle("is-split", Boolean(currentCategory));
 
-      // সিলেক্ট করা বিভাগটি প্রথমে রাখলে সেটি বাম পাশের বড় ঘরে বসবে, আর বাকি ২টি ডান পাশে উপর-নিচে বসবে
       const orderedCategories = currentCategory
         ? [
             ...CATEGORIES.filter((c) => c.id === currentCategory),
@@ -1103,7 +1114,6 @@
         imgWrap.appendChild(mainImg);
         imgWrap.appendChild(badge);
 
-        // সাদা সরু অংশ: কোড ও দাম একই লাইনে, নিচে ধরন ও পছন্দ বাটন
         const body = document.createElement("div");
         body.className = "prod-body";
         body.onclick = (e) => {
@@ -1277,7 +1287,6 @@
       }
     }
 
-    // লাইটবক্সে টাচ সোয়াইপ সাপোর্ট
     let touchStartX = 0;
     const lbStageEl = document.getElementById("lbStage");
     lbStageEl.addEventListener("touchstart", (e) => {
