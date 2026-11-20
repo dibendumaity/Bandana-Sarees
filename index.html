@@ -2,8 +2,9 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>বঙ্গনারী — কালেকশন ক্যাটালগ</title>
+  <!-- মোবাইলে সাধারণ মোডেও ডেস্কটপ-স্টাইল পরিপাটি লেআউট বজায় রাখার জন্য -->
+  <meta name="viewport" content="width=960" />
+  <title>বন্দনা শাড়ি — কালেকশন ক্যাটালগ</title>
   <style>
     :root {
       --bg-page: #faf7f5;
@@ -25,17 +26,19 @@
 
     body {
       margin: 0;
+      min-width: 960px;
       font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system, sans-serif;
       background-color: var(--bg-page);
       color: var(--ink-main);
-      padding-bottom: 112px;
-      line-height: 1.45;
+      padding-bottom: 110px;
+      line-height: 1.4;
     }
 
-    /* আরও বড় ও নিচের দিকে লম্বা ওয়েলকাম ব্যানার */
+    /* ওয়েলকাম ব্যানার: ক্রপ না হয়ে আনুপাতিকভাবে পুরোটা দেখাবে */
     .hero-banner {
       width: 100%;
-      min-height: 360px;
+      max-width: 1200px;
+      margin: 0 auto;
       background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
       position: relative;
       overflow: hidden;
@@ -43,17 +46,17 @@
 
     .hero-banner img {
       width: 100%;
-      min-height: 360px;
-      max-height: 520px;
+      height: auto;
+      max-height: 680px;
       object-fit: cover;
       display: block;
     }
 
     /* মূল কন্টেইনার */
     .container {
-      max-width: 900px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 14px;
+      padding: 18px 20px;
     }
 
     /* টপ নেভিগেশন */
@@ -61,9 +64,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 12px;
       margin-bottom: 14px;
-      min-height: 44px;
+      min-height: 46px;
     }
 
     .back-nav-btn {
@@ -71,51 +74,57 @@
       border: 1.5px solid var(--border-soft);
       color: var(--maroon);
       font-weight: 800;
-      font-size: 1.1rem;
-      padding: 9px 15px;
+      font-size: 1.15rem;
+      padding: 9px 18px;
       border-radius: 10px;
       cursor: pointer;
     }
 
     .status-info {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--ink-main);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .section-title {
-      font-size: 1.65rem;
+      font-size: 1.75rem;
       font-weight: 900;
-      margin: 16px 0 12px;
+      margin: 14px 0 14px;
       color: var(--ink-main);
     }
 
-    /* এক লাইনে ২টি করে ক্যাটাগরি কার্ড (শাড়ি ও ব্লাউজ ওপরে, কুর্তি নিচে) */
+    /* ১. শুরুতে এক সারিতে ৩টি পছন্দের বিভাগ (শাড়ি, ব্লাউজ, কুর্তি) */
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* ২. যেকোনো একটি সিলেক্ট করলে: বাম পাশে ১টি বড় (1.45fr) ও ডান পাশে ২টি ছোট উপর-নিচে (1fr) */
+    .category-grid.is-split {
+      grid-template-columns: 1.45fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 16px;
+      align-items: stretch;
     }
 
     .cat-card {
       background: var(--bg-card);
-      border: 1.5px solid var(--border-soft);
-      border-radius: 14px;
+      border: 2px solid var(--border-soft);
+      border-radius: 16px;
       overflow: hidden;
       text-align: center;
       cursor: pointer;
       padding: 0;
-      box-shadow: 0 3px 8px rgba(128, 0, 32, 0.08);
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(128, 0, 32, 0.08);
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
     }
 
     .cat-card:active {
-      transform: scale(0.98);
-    }
-
-    .cat-card.active {
-      border-color: var(--maroon);
-      background: var(--accent-soft);
+      transform: scale(0.985);
     }
 
     .cat-card img {
@@ -126,17 +135,72 @@
     }
 
     .cat-label {
-      padding: 12px 6px;
-      font-size: 1.55rem;
+      padding: 12px 10px;
+      font-size: 1.65rem;
       font-weight: 900;
       color: var(--ink-main);
+      background: #fff;
+    }
+
+    /* স্প্লিট মোডে সিলেক্ট করা বড় কার্ড (বাম পাশে পুরো উচ্চতা জুড়ে) */
+    .category-grid.is-split .cat-card.active {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      border-color: var(--maroon);
+      background: var(--accent-soft);
+      box-shadow: 0 6px 18px rgba(128, 0, 32, 0.16);
+    }
+
+    .category-grid.is-split .cat-card.active img {
+      flex: 1;
+      aspect-ratio: 4 / 3;
+      max-height: 310px;
+    }
+
+    .category-grid.is-split .cat-card.active .cat-label {
+      background: var(--maroon);
+      color: #ffffff;
+      font-size: 1.85rem;
+      padding: 14px 12px;
+    }
+
+    /* স্প্লিট মোডে ডান পাশের বাকি ২টি ছোট কার্ড (উপর-নিচে) */
+    .category-grid.is-split .cat-card:not(.active) {
+      grid-column: 2 / 3;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+    }
+
+    .category-grid.is-split .cat-card:not(.active) img {
+      width: 46%;
+      height: 100%;
+      min-height: 132px;
+      aspect-ratio: 4 / 3;
+      flex-shrink: 0;
+    }
+
+    .category-grid.is-split .cat-card:not(.active) .cat-label {
+      flex: 1;
+      font-size: 1.5rem;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .category-grid.is-split .cat-card:not(.active) .cat-label::after {
+      content: "›";
+      font-size: 1.7rem;
+      color: var(--maroon);
+      font-weight: 900;
     }
 
     /* দামের ভাগ ও ভেতরের ধরন ফিল্টার চিপস */
     .filter-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 10px;
       margin: 12px 0;
     }
 
@@ -144,8 +208,8 @@
       background: #fff;
       border: 1.5px solid #d5c2c8;
       color: var(--ink-main);
-      padding: 10px 15px;
-      border-radius: 24px;
+      padding: 10px 18px;
+      border-radius: 26px;
       font-size: 1.25rem;
       font-weight: 800;
       cursor: pointer;
@@ -157,12 +221,12 @@
       border-color: var(--maroon);
     }
 
-    /* মোবাইলে এক লাইনে ২টি করে প্রোডাক্ট কার্ড */
+    /* প্রোডাক্ট গ্রিড: ৩ কলামে বড় ছবিসহ সাজানো */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
     }
 
     .product-card {
@@ -176,7 +240,7 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
     }
 
-    /* কার্ডে প্রথমে ১টি ছবি ও ওপরের দিকে '২টি ছবি আছে' ব্যাজ */
+    /* প্রোডাক্টের ছবি বড় রাখা হয়েছে */
     .img-single-wrap {
       position: relative;
       width: 100%;
@@ -193,61 +257,68 @@
 
     .two-photo-badge {
       position: absolute;
-      top: 8px;
-      right: 8px;
-      background: rgba(25, 16, 20, 0.8);
+      top: 10px;
+      right: 10px;
+      background: rgba(25, 16, 20, 0.82);
       color: #ffffff;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 12px;
     }
 
-    /* পুরো সাদা অংশই ক্লিকেবল সিলেক্ট এরিয়া */
+    /* সাদা কার্ডের লেখার অংশ: উপর-নিচ থেকে কমপ্রেস করে সরু ও পরিপাটি করা হয়েছে */
     .prod-body {
-      padding: 10px;
+      padding: 7px 10px 8px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      flex: 1;
-      justify-content: space-between;
+      gap: 4px;
       cursor: pointer;
       background: var(--bg-card);
     }
 
-    .prod-code-row {
+    /* কোড এবং দাম একই লাইনে/লেভেলে */
+    .prod-top-line {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.95rem;
-      color: var(--ink-muted);
-      font-weight: 700;
+      align-items: baseline;
+      gap: 6px;
+      line-height: 1.15;
     }
 
-    .prod-price-center {
-      text-align: center;
-      font-size: 1.95rem;
+    .prod-code-text {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .prod-price-inline {
+      font-size: 1.65rem;
       font-weight: 900;
       color: var(--maroon);
-      line-height: 1.15;
-      padding: 2px 0;
+      line-height: 1.1;
+      white-space: nowrap;
     }
 
     .prod-type {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: var(--ink-main);
-      line-height: 1.25;
+      line-height: 1.2;
       text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .select-btn {
-      margin-top: 4px;
+      margin-top: 2px;
       width: 100%;
       border: none;
-      border-radius: 10px;
-      padding: 11px 8px;
-      font-size: 1.12rem;
+      border-radius: 9px;
+      padding: 7px 8px;
+      font-size: 1.08rem;
       font-weight: 800;
       cursor: pointer;
       background-color: var(--maroon);
@@ -257,6 +328,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      line-height: 1.2;
     }
 
     .select-btn.is-selected {
@@ -267,7 +339,7 @@
     .red-tick {
       color: #ff2a2a;
       font-weight: 900;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       text-shadow: 0 0 2px rgba(255, 255, 255, 0.85);
     }
 
@@ -280,7 +352,7 @@
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      padding: 14px;
+      padding: 18px 24px;
       color: #fff;
     }
 
@@ -292,7 +364,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1rem;
+      font-size: 1.15rem;
       color: #e5d8dc;
     }
 
@@ -302,13 +374,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 8px 0;
+      margin: 10px 0;
       overflow: hidden;
     }
 
     .lb-stage img {
       max-width: 100%;
-      max-height: 54vh;
+      max-height: 60vh;
       border-radius: 10px;
       object-fit: contain;
       background: #000;
@@ -318,19 +390,19 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       color: #111;
       border: none;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 1.35rem;
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .lb-nav-btn.prev { left: 6px; }
-    .lb-nav-btn.next { right: 6px; }
+    .lb-nav-btn.prev { left: 16px; }
+    .lb-nav-btn.next { right: 16px; }
 
     .lb-dots {
       display: flex;
@@ -340,8 +412,8 @@
     }
 
     .lb-dot {
-      width: 10px;
-      height: 10px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.35);
     }
@@ -358,6 +430,7 @@
 
     .lb-back-btn {
       width: 100%;
+      max-width: 560px;
       background: #ffffff;
       color: var(--maroon-dark);
       border: none;
@@ -372,7 +445,10 @@
     .lb-footer {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
-      padding: 12px;
+      padding: 12px 16px;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .lb-info-row {
@@ -381,7 +457,7 @@
       align-items: center;
       margin-bottom: 8px;
       font-weight: 800;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
     }
 
     /* নিচের ফিক্সড বার: ৫০% / ৫০% ভাগ */
@@ -393,10 +469,11 @@
       background: #ffffff;
       border-top: 2px solid var(--border-soft);
       box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.14);
-      padding: 8px 10px;
+      padding: 8px 16px;
       display: none;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 12px;
       z-index: 800;
     }
 
@@ -407,8 +484,7 @@
     .cart-note-box {
       position: relative;
       flex: 1;
-      width: 50%;
-      min-width: 0;
+      max-width: 540px;
       height: 64px;
       border-radius: 10px;
       overflow: hidden;
@@ -416,7 +492,7 @@
       border: 1px solid #f3c677;
       display: flex;
       align-items: center;
-      padding: 0 8px;
+      padding: 0 12px;
     }
 
     .cart-note-box img.note-bg {
@@ -433,7 +509,7 @@
       z-index: 1;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
       width: 100%;
     }
 
@@ -441,9 +517,9 @@
       background: var(--maroon);
       color: #fff;
       font-weight: 900;
-      font-size: 1.05rem;
-      min-width: 30px;
-      height: 30px;
+      font-size: 1.15rem;
+      min-width: 34px;
+      height: 34px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -453,18 +529,18 @@
     }
 
     .cart-note-text {
-      font-size: 0.9rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--ink-main);
-      background: rgba(255, 255, 255, 0.88);
-      padding: 3px 6px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 4px 10px;
       border-radius: 6px;
       line-height: 1.25;
     }
 
     .wa-img-btn {
       flex: 1;
-      width: 50%;
+      max-width: 540px;
       height: 64px;
       padding: 0;
       border: none;
@@ -491,12 +567,12 @@
       background: #25d366;
       color: #fff;
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 8px;
+      padding: 0 12px;
       text-align: center;
       pointer-events: none;
     }
@@ -532,11 +608,11 @@
 
     .exit-card {
       width: 100%;
-      max-width: 420px;
-      min-height: 52vh;
+      max-width: 460px;
+      min-height: 44vh;
       background: #ffffff;
       border-radius: 18px;
-      padding: 24px 18px;
+      padding: 28px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -545,7 +621,7 @@
     }
 
     .exit-msg {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--ink-main);
       margin: auto 0;
@@ -565,7 +641,7 @@
       border: none;
       border-radius: 12px;
       padding: 15px;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       cursor: pointer;
     }
@@ -576,7 +652,7 @@
       border: 1px solid #d8c2c8;
       border-radius: 12px;
       padding: 13px;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
     }
@@ -585,30 +661,30 @@
       background: #fff;
       border: 1px dashed var(--border-soft);
       border-radius: 12px;
-      padding: 24px 14px;
+      padding: 28px 16px;
       text-align: center;
       color: var(--ink-muted);
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       margin-top: 12px;
     }
   </style>
 </head>
 <body>
 
-  <!-- বড় ও নিচের দিকে লম্বা ওয়েলকাম ব্যানার -->
+  <!-- ওয়েলকাম ব্যানার -->
   <header class="hero-banner">
-    <img src="images/banner.jpg" alt="বঙ্গনারী ব্যানার" onerror="this.style.display='none'" />
+    <img src="images/banner.jpg" alt="বন্দনা শাড়ি ব্যানার" onerror="this.style.display='none'" />
   </header>
 
   <main class="container">
     <div class="top-bar">
-      <button id="backBtn" class="back-nav-btn" style="display:none;" onclick="goBackStep()">← আগের ধাপ</button>
-      <span id="statusInfo" class="status-info">ক্যাটাগরি বেছে নিন</span>
+      <button id="backBtn" class="back-nav-btn" style="display:none;" onclick="goBackStep()">← সব বিভাগ</button>
+      <span id="statusInfo" class="status-info">পছন্দের বিভাগ বেছে নিন</span>
     </div>
 
-    <!-- ক্যাটাগরি গ্রিড (ক্রম: শাড়ি, ব্লাউজ, কুর্তি -> ২ কলামে শাড়ি-ব্লাউজ ওপরে, কুর্তি নিচে) -->
+    <!-- পছন্দের বিভাগ গ্রিড (শুরুতে এক সারিতে ৩টি; সিলেক্ট করলে বাম পাশে বড় ১টি ও ডান পাশে উপর-নিচে ছোট ২টি) -->
     <section id="categorySection">
-      <div class="section-title">ক্যাটাগরি</div>
+      <div class="section-title">পছন্দের বিভাগ</div>
       <div id="categoryGrid" class="category-grid"></div>
     </section>
 
@@ -618,7 +694,7 @@
       <div id="priceChips" class="filter-strip"></div>
     </section>
 
-    <!-- ভেতরের ধরন / সাব-ক্যাটাগরি ও প্রোডাক্ট তালিকা -->
+    <!-- ভেতরের ধরন ও প্রোডাক্ট তালিকা -->
     <section id="productSection" style="display:none;">
       <div class="section-title" id="typeHeading">ধরন অনুযায়ী দেখুন</div>
       <div id="typeChips" class="filter-strip"></div>
@@ -697,10 +773,10 @@
     const CONFIG = {
       whatsappNumber: "919398452384",
       imageFolder: "images",
+      // Google Sheet Publish to web (.csv) লিংকটি পরে এখানে কোটেশনের ভেতর বসাবেন
       googleSheetCsvUrl: ""
     };
 
-    // শাড়ি ও ব্লাউজ প্রথম লাইনে, কুর্তি নিচের লাইনে
     const CATEGORIES = [
       { id: "saree", name: "শাড়ি", image: "images/cat-saree.jpg" },
       { id: "blouse", name: "ব্লাউজ", image: "images/cat-blouse.jpg" },
@@ -816,7 +892,7 @@
     }
 
     // ==========================================
-    // ৩. সেশন স্টেট
+    // ৩. সেশন স্টেট ও হেল্পার ফাংশন
     // ==========================================
     let allProducts = [...SAMPLE_PRODUCTS];
     let currentCategory = null;
@@ -831,6 +907,37 @@
     let ignoreNextPopstate = false;
     let exitPromptArmed = false;
 
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function toBengaliNumber(num) {
+      const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
+    }
+
+    function parsePriceValue(raw) {
+      const bnMap = { "০": "0", "১": "1", "২": "2", "৩": "3", "৪": "4", "৫": "5", "৬": "6", "৭": "7", "৮": "8", "৯": "9" };
+      const normalized = String(raw || "")
+        .replace(/[০-৯]/g, (ch) => bnMap[ch])
+        .replace(/[^\d.]/g, "");
+      const val = Number(normalized);
+      return Number.isFinite(val) && val > 0 ? val : 0;
+    }
+
+    function normalizeCategoryId(rawCat) {
+      const c = String(rawCat || "").trim().toLowerCase();
+      if (c === "saree" || c === "sari" || c === "শাড়ি" || c === "শাড়ি") return "saree";
+      if (c === "kurti" || c === "কুর্তি") return "kurti";
+      if (c === "blouse" || c === "ব্লাউজ") return "blouse";
+      return c;
+    }
+
     function getActivePriceFilters() {
       return PRICE_FILTERS_BY_CAT[currentCategory] || DEFAULT_PRICE_FILTERS;
     }
@@ -840,11 +947,6 @@
         `${CONFIG.imageFolder}/${serial}-1.jpg`,
         `${CONFIG.imageFolder}/${serial}-2.jpg`
       ];
-    }
-
-    function toBengaliNumber(num) {
-      const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
     }
 
     function setButtonSelectedState(btn, isSelected) {
@@ -863,7 +965,17 @@
     function renderCategories() {
       const grid = document.getElementById("categoryGrid");
       grid.innerHTML = "";
-      CATEGORIES.forEach((cat) => {
+      grid.classList.toggle("is-split", Boolean(currentCategory));
+
+      // সিলেক্ট করা বিভাগটি প্রথমে রাখলে সেটি বাম পাশের বড় ঘরে বসবে, আর বাকি ২টি ডান পাশে উপর-নিচে বসবে
+      const orderedCategories = currentCategory
+        ? [
+            ...CATEGORIES.filter((c) => c.id === currentCategory),
+            ...CATEGORIES.filter((c) => c.id !== currentCategory)
+          ]
+        : CATEGORIES;
+
+      orderedCategories.forEach((cat) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "cat-card" + (currentCategory === cat.id ? " active" : "");
@@ -895,7 +1007,7 @@
 
       const catObj = CATEGORIES.find((c) => c.id === catId);
       document.getElementById("backBtn").style.display = "inline-block";
-      document.getElementById("statusInfo").textContent = catObj ? catObj.name : "";
+      document.getElementById("statusInfo").textContent = catObj ? `বিভাগ: ${catObj.name}` : "";
       document.getElementById("priceSection").style.display = "block";
       document.getElementById("productSection").style.display = "block";
 
@@ -991,7 +1103,7 @@
         imgWrap.appendChild(mainImg);
         imgWrap.appendChild(badge);
 
-        // পুরো সাদা অংশ জুড়ে ক্লিক করলে সিলেক্ট হবে
+        // সাদা সরু অংশ: কোড ও দাম একই লাইনে, নিচে ধরন ও পছন্দ বাটন
         const body = document.createElement("div");
         body.className = "prod-body";
         body.onclick = (e) => {
@@ -999,13 +1111,9 @@
           toggleSelect(prod.serial);
         };
 
-        const codeRow = document.createElement("div");
-        codeRow.className = "prod-code-row";
-        codeRow.innerHTML = `<span>কোড</span><span>${escapeHtml(prod.serial)}</span>`;
-
-        const priceEl = document.createElement("div");
-        priceEl.className = "prod-price-center";
-        priceEl.textContent = `₹${toBengaliNumber(prod.price)}`;
+        const topLine = document.createElement("div");
+        topLine.className = "prod-top-line";
+        topLine.innerHTML = `<span class="prod-code-text">কোড: ${escapeHtml(prod.serial)}</span><span class="prod-price-inline">₹${toBengaliNumber(prod.price)}</span>`;
 
         const typeEl = document.createElement("div");
         typeEl.className = "prod-type";
@@ -1020,8 +1128,7 @@
           toggleSelect(prod.serial);
         };
 
-        body.appendChild(codeRow);
-        body.appendChild(priceEl);
+        body.appendChild(topLine);
         body.appendChild(typeEl);
         body.appendChild(selBtn);
 
@@ -1034,7 +1141,7 @@
     function goBackStep() {
       currentCategory = null;
       document.getElementById("backBtn").style.display = "none";
-      document.getElementById("statusInfo").textContent = "ক্যাটাগরি বেছে নিন";
+      document.getElementById("statusInfo").textContent = "পছন্দের বিভাগ বেছে নিন";
       document.getElementById("priceSection").style.display = "none";
       document.getElementById("productSection").style.display = "none";
       renderCategories();
@@ -1118,42 +1225,44 @@
       document.getElementById("lbPrice").textContent = `₹${toBengaliNumber(prod.price)}`;
 
       const lbBtn = document.getElementById("lbSelectBtn");
+      setButtonSelectedState(lbBtn, selectedMap.has(prod.serial));
       lbBtn.onclick = () => toggleSelect(prod.serial);
 
-      updateLightboxSlide();
-      syncSelectButtonsUI();
-
+      renderLightboxSlide();
       document.getElementById("lightbox").classList.add("open");
-      lbOpenedFromHistory = true;
-      history.pushState({ modal: "lightbox" }, "");
+
+      try {
+        history.pushState({ modal: "lightbox" }, "");
+        lbOpenedFromHistory = true;
+      } catch (e) {}
     }
 
-    function updateLightboxSlide() {
+    function renderLightboxSlide() {
       if (!lbProduct) return;
       const imgs = getProductImages(lbProduct.serial);
-      const imgEl = document.getElementById("lbImg");
-      imgEl.src = imgs[lbSlideIndex] || imgs[0];
+      const total = imgs.length;
+      if (lbSlideIndex < 0) lbSlideIndex = total - 1;
+      if (lbSlideIndex >= total) lbSlideIndex = 0;
 
+      document.getElementById("lbImg").src = imgs[lbSlideIndex];
       document.getElementById("lbSlideCounter").textContent =
-        `${toBengaliNumber(lbSlideIndex + 1)} / ${toBengaliNumber(imgs.length)}`;
+        `${toBengaliNumber(lbSlideIndex + 1)} / ${toBengaliNumber(total)}`;
 
       const dotsWrap = document.getElementById("lbDots");
       dotsWrap.innerHTML = "";
-      imgs.forEach((_, i) => {
-        const d = document.createElement("span");
-        d.className = "lb-dot" + (i === lbSlideIndex ? " active" : "");
-        dotsWrap.appendChild(d);
+      imgs.forEach((_, idx) => {
+        const dot = document.createElement("span");
+        dot.className = "lb-dot" + (idx === lbSlideIndex ? " active" : "");
+        dotsWrap.appendChild(dot);
       });
     }
 
-    function changeLbSlide(step) {
-      if (!lbProduct) return;
-      const total = getProductImages(lbProduct.serial).length;
-      lbSlideIndex = (lbSlideIndex + step + total) % total;
-      updateLightboxSlide();
+    function changeLbSlide(delta) {
+      lbSlideIndex += delta;
+      renderLightboxSlide();
     }
 
-    function closeLightbox(fromButton = false) {
+    function closeLightbox(fromButton) {
       const lb = document.getElementById("lightbox");
       if (!lb.classList.contains("open")) return;
       lb.classList.remove("open");
@@ -1163,54 +1272,74 @@
         lbOpenedFromHistory = false;
         ignoreNextPopstate = true;
         history.back();
+      } else {
+        lbOpenedFromHistory = false;
       }
     }
 
+    // লাইটবক্সে টাচ সোয়াইপ সাপোর্ট
     let touchStartX = 0;
-    document.getElementById("lbStage").addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+    const lbStageEl = document.getElementById("lbStage");
+    lbStageEl.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].clientX;
     }, { passive: true });
-
-    document.getElementById("lbStage").addEventListener("touchend", (e) => {
-      const diff = e.changedTouches[0].screenX - touchStartX;
+    lbStageEl.addEventListener("touchend", (e) => {
+      const diff = e.changedTouches[0].clientX - touchStartX;
       if (Math.abs(diff) > 40) {
         changeLbSlide(diff < 0 ? 1 : -1);
       }
     }, { passive: true });
 
     // ==========================================
-    // ৭. WhatsApp অর্ডার পাঠানো
+    // ৭. WhatsApp-এ সরাসরি অর্ডার পাঠানো
     // ==========================================
     function sendOrderToWhatsApp() {
       if (selectedMap.size === 0) return;
 
-      const lines = ["নমস্কার, আমি নিচের প্রোডাক্টগুলো পছন্দ করেছি:"];
-      let total = 0;
-      let i = 1;
+      const lines = ["নমস্কার! আমি নিচের কালেকশনগুলো অর্ডার করতে চাই:", ""];
+      let idx = 1;
+      let totalAmount = 0;
 
-      selectedMap.forEach((p) => {
-        const amt = Number(p.price) || 0;
-        total += amt;
-        lines.push(`${toBengaliNumber(i)}. কোড: ${p.serial} | ${p.type} | ₹${toBengaliNumber(amt)}`);
-        i++;
+      selectedMap.forEach((prod) => {
+        const catObj = CATEGORIES.find((c) => c.id === prod.category);
+        const catName = catObj ? catObj.name : prod.category;
+        lines.push(`${toBengaliNumber(idx)}. কোড: ${prod.serial} | ${catName} (${prod.type}) — ₹${toBengaliNumber(prod.price)}`);
+        totalAmount += Number(prod.price) || 0;
+        idx++;
       });
 
-      lines.push(`মোট আনুমানিক মূল্য: ₹${toBengaliNumber(total)}`);
-      const message = encodeURIComponent(lines.join("\n"));
-      const cleanPhone = CONFIG.whatsappNumber.replace(/\D/g, "");
-      const url = `https://wa.me/${cleanPhone}?text=${message}`;
+      lines.push("");
+      lines.push(`মোট পছন্দ: ${toBengaliNumber(selectedMap.size)}টি`);
+      lines.push(`আনুমানিক মোট মূল্য: ₹${toBengaliNumber(totalAmount)}`);
 
-      window.open(url, "_blank", "noopener,noreferrer");
+      const message = encodeURIComponent(lines.join("\n"));
+      const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${message}`;
+      window.open(waUrl, "_blank");
     }
 
     // ==========================================
-    // ৮. এক্সিট গার্ড পপ-আপ
+    // ৮. এক্সিট গার্ড (কার্টে আইটেম থাকলে পপ-আপ)
     // ==========================================
     function armExitGuard() {
-      if (!exitPromptArmed) {
-        exitPromptArmed = true;
-        history.pushState({ guard: "active" }, "");
-      }
+      if (exitPromptArmed) return;
+      exitPromptArmed = true;
+      try {
+        history.pushState({ guard: "exit" }, "");
+      } catch (e) {}
+    }
+
+    function stayOnSite() {
+      document.getElementById("exitModal").classList.remove("open");
+      try {
+        history.pushState({ guard: "exit" }, "");
+      } catch (e) {}
+    }
+
+    function confirmLeaveSite() {
+      document.getElementById("exitModal").classList.remove("open");
+      selectedMap.clear();
+      exitPromptArmed = false;
+      history.back();
     }
 
     window.addEventListener("popstate", () => {
@@ -1228,41 +1357,76 @@
 
       if (selectedMap.size > 0) {
         document.getElementById("exitModal").classList.add("open");
-        history.pushState({ guard: "active" }, "");
       }
     });
 
-    function stayOnSite() {
-      document.getElementById("exitModal").classList.remove("open");
-    }
-
-    function confirmLeaveSite() {
-      selectedMap.clear();
-      exitPromptArmed = false;
-      document.getElementById("exitModal").classList.remove("open");
-      updateStickyCartBar(false);
-      history.go(-2);
-    }
+    window.addEventListener("beforeunload", (e) => {
+      if (selectedMap.size > 0) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    });
 
     // ==========================================
     // ৯. Google Sheet CSV লোডার
     // ==========================================
-    async function loadFromGoogleSheetIfConfigured() {
+    function parseCsvLine(line) {
+      const result = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+          if (inQuotes && line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (ch === "," && !inQuotes) {
+          result.push(current.trim());
+          current = "";
+        } else {
+          current += ch;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    async function loadProductsFromSheet() {
       if (!CONFIG.googleSheetCsvUrl) return;
       try {
-        const res = await fetch(CONFIG.googleSheetCsvUrl);
+        const res = await fetch(CONFIG.googleSheetCsvUrl, { cache: "no-store" });
         if (!res.ok) return;
         const text = await res.text();
-        const rows = text.trim().split(/\r?\n/).slice(1);
-        const parsed = rows
-          .map((line) => line.split(",").map((c) => c.trim().replace(/^"|"$/g, "")))
-          .filter((cols) => cols[0] && cols[1] && cols[3])
-          .map((cols) => ({
-            serial: cols[0],
-            category: cols[1].toLowerCase(),
-            type: cols[2] || "কালেকশন",
-            price: Number(cols[3]) || 0
-          }));
+        const rows = text
+          .split(/\r?\n/)
+          .map((r) => r.trim())
+          .filter(Boolean);
+
+        if (rows.length < 2) return;
+
+        const headers = parseCsvLine(rows[0]).map((h) => h.toLowerCase());
+        const serialIdx = headers.indexOf("serial");
+        const catIdx = headers.indexOf("category");
+        const typeIdx = headers.indexOf("type");
+        const priceIdx = headers.indexOf("price");
+
+        if (serialIdx === -1 || catIdx === -1 || priceIdx === -1) return;
+
+        const parsed = [];
+        for (let i = 1; i < rows.length; i++) {
+          const cols = parseCsvLine(rows[i]);
+          const serial = (cols[serialIdx] || "").trim();
+          const category = normalizeCategoryId(cols[catIdx]);
+          const type = typeIdx !== -1 ? (cols[typeIdx] || "").trim() : "কালেকশন";
+          const price = parsePriceValue(cols[priceIdx]);
+
+          if (serial && category && price > 0) {
+            parsed.push({ serial, category, type, price });
+          }
+        }
 
         if (parsed.length > 0) {
           allProducts = parsed;
@@ -1270,22 +1434,14 @@
             renderTypeChipsAndProducts();
           }
         }
-      } catch (err) {}
+      } catch (err) {
+        console.warn("Google Sheet লোড হতে সমস্যা হয়েছে, ডেমো ডেটা দেখানো হচ্ছে:", err);
+      }
     }
 
-    function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, (m) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[m]));
-    }
-
-    // শুরুতে রেন্ডার
+    // পেজ শুরু হলে রেন্ডার
     renderCategories();
-    loadFromGoogleSheetIfConfigured();
+    loadProductsFromSheet();
   </script>
 </body>
 </html>
