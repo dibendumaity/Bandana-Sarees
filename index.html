@@ -108,14 +108,14 @@
       font-weight: 800;
       text-decoration: none;
       white-space: nowrap;
-      transition: background-color 0.15s ease, transform 0.1s ease;
+      transition: transform 0.1s ease;
     }
 
     .map-location-btn:active {
       transform: scale(0.97);
     }
 
-    /* টপ নেভিগেশন: বামে হোমপেজ বাটন, ডানে স্ক্রলযোগ্য লোগো বোতাম */
+    /* টপ বার: বামে হোমপেজ বাটন, ডানে বর্ডারহীন প্লেইন লোগো */
     .top-bar {
       display: flex;
       align-items: center;
@@ -136,33 +136,52 @@
       flex-shrink: 0;
     }
 
-    .brand-logo-btn {
-      background: #ffffff;
-      border: 1px solid var(--border-soft);
-      border-radius: 10px;
-      padding: 3px 8px;
-      cursor: pointer;
+    /* সাধারণ বিভাগে লোগো: বক্স বা বর্ডার ছাড়া প্লেইন */
+    .plain-logo-wrap {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
       height: 52px;
-      max-width: 132px;
-      box-shadow: 0 2px 6px rgba(128, 0, 32, 0.06);
-      transition: transform 0.14s ease, border-color 0.14s ease;
+      max-width: 124px;
     }
 
-    .brand-logo-btn:active {
-      transform: scale(0.96);
-      border-color: var(--maroon);
-    }
-
-    .brand-logo-btn img {
+    .plain-logo-wrap img {
       height: 100%;
       width: auto;
-      max-width: 116px;
-      aspect-ratio: 4 / 3;
+      max-width: 124px;
       object-fit: contain;
       display: block;
+    }
+
+    /* "সবার পছন্দের" প্রোডাক্টে ক্লিক করলে খোলা ভিউতে সেন্টারে বড় প্লেইন লোগো */
+    .spotlight-logo-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 4px 0 10px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .spotlight-logo-center img {
+      height: 82px;
+      width: auto;
+      max-width: 210px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* বিভাগ ভিউতে টপ বারের ডানদিকে বড় লোগো লুকানো থাকবে কারণ সেন্টারে দেখানো হচ্ছে */
+    .top-bar.is-spotlight-mode .plain-logo-wrap {
+      display: none;
     }
 
     .section-title {
@@ -215,7 +234,7 @@
 
     /* হাইলাইট করা প্রোডাক্ট */
     .featured-spotlight {
-      margin: 6px 0 14px;
+      margin: 4px 0 14px;
       padding-bottom: 14px;
       border-bottom: 1.5px dashed var(--border-soft);
       display: flex;
@@ -589,7 +608,7 @@
       animation: waFirstAttention 0.75s ease-in-out;
     }
 
-    /* মডাল পপ-আপ (হোম স্ক্রিনে অ্যাড পারমিশন ও এক্সিট কনফার্মেশন) */
+    /* এক্সিট কনফার্মেশন পপ-আপ */
     .exit-modal {
       position: fixed;
       inset: 0;
@@ -618,26 +637,11 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
     }
 
-    .install-logo-preview {
-      width: 72px;
-      height: 54px;
-      object-fit: contain;
-      margin: 0 auto 8px;
-      display: block;
-    }
-
-    .install-heading {
-      font-size: 1.12rem;
-      font-weight: 900;
-      color: var(--maroon-dark);
-      margin-bottom: 6px;
-    }
-
     .exit-msg {
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.08rem;
+      font-weight: 800;
       color: var(--ink-main);
-      margin: 8px 0 16px;
+      margin: 10px 0 16px;
       line-height: 1.5;
     }
 
@@ -703,7 +707,6 @@
             aria-label="ম্যাপে লোকেশন"
             style="margin-left: 4px; vertical-align: middle;"
           >
-            <!-- কালারফুল গুগল ম্যাপ পিন আইকন -->
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#EA4335" d="M12 2C8.13 2 5 5.13 5 9c0 1.74.64 3.33 1.7 4.55L12 20l5.3-6.45C18.36 12.33 19 10.74 19 9c0-3.87-3.13-7-7-7z"/>
               <path fill="#4285F4" d="M12 2v7h7c0-3.87-3.13-7-7-7z"/>
@@ -717,18 +720,12 @@
       </div>
     </section>
 
-    <!-- টপ বার: বামে হোমপেজ বাটন, ডানে স্ক্রলযোগ্য লোগো (images/b.png) -->
+    <!-- টপ বার: বামে হোমপেজ বাটন, ডানে প্লেইন লোগো (images/b.png) -->
     <div class="top-bar" id="topBar" style="display:none;">
-      <button id="backBtn" class="back-nav-btn" onclick="goBackStep()">← হোমপেজ</button>
-      <button
-        type="button"
-        class="brand-logo-btn"
-        onclick="openAddToHomeDialog()"
-        aria-label="মোবাইল স্ক্রিনে অ্যাড করুন"
-        title="মোবাইল স্ক্রিনে অ্যাড করুন"
-      >
+      <button id="backBtn" class="back-nav-btn" onclick="goBackStep(true)">← হোমপেজ</button>
+      <div class="plain-logo-wrap">
         <img src="images/b.png" alt="বন্দনা শাড়ি কুটির লোগো" onerror="this.style.display='none'" />
-      </button>
+      </div>
     </div>
 
     <!-- ১. বিভাগ (শাড়ি, ব্লাউজ, কুর্তি — শুধু হোমপেজে দেখাবে) -->
@@ -804,21 +801,6 @@
     </button>
   </div>
 
-  <!-- লোগোতে ক্লিক করলে হোম স্ক্রিনে অ্যাড করার পারমিশন ডায়ালগ -->
-  <div id="addHomeModal" class="exit-modal" role="dialog" aria-modal="true">
-    <div class="exit-card">
-      <img src="images/b.png" alt="লোগো" class="install-logo-preview" onerror="this.style.display='none'" />
-      <div class="install-heading">মোবাইল স্ক্রিনে অ্যাড করুন</div>
-      <div id="addHomeMsg" class="exit-msg">
-        এই ক্যাটালগটি মোবাইল স্ক্রিনে অ্যাড করতে নিচের “অ্যাড করুন” বোতামে চাপুন।
-      </div>
-      <div class="exit-actions">
-        <button type="button" class="btn-stay" onclick="confirmAddToHome()">অ্যাড করুন</button>
-        <button type="button" class="btn-leave" onclick="closeAddHomeModal()">বাতিল</button>
-      </div>
-    </div>
-  </div>
-
   <!-- এক্সিট কনফার্মেশন পপ-আপ -->
   <div id="exitModal" class="exit-modal" role="dialog" aria-modal="true">
     <div class="exit-card">
@@ -877,48 +859,7 @@
     ];
 
     // ==========================================
-    // ২. হোম স্ক্রিনে অ্যাড করার পারমিশন প্রম্পট হ্যান্ডলিং
-    // ==========================================
-    let deferredInstallPrompt = null;
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredInstallPrompt = e;
-    });
-
-    function openAddToHomeDialog() {
-      const msgEl = document.getElementById("addHomeMsg");
-      if (deferredInstallPrompt) {
-        msgEl.textContent = "এই ক্যাটালগটি মোবাইল স্ক্রিনে অ্যাড করার জন্য নিচের “অ্যাড করুন” বোতামে চাপুন।";
-      } else {
-        msgEl.textContent =
-          "“অ্যাড করুন”-এ চাপুন—ব্রাউজার প্রম্পট না এলে ব্রাউজারের ওপরের মেনু (⋮) থেকে “Add to Home screen” বা “Install app” বেছে নিয়ে পারমিশন দিন।";
-      }
-      document.getElementById("addHomeModal").classList.add("open");
-    }
-
-    function closeAddHomeModal() {
-      document.getElementById("addHomeModal").classList.remove("open");
-    }
-
-    async function confirmAddToHome() {
-      if (deferredInstallPrompt) {
-        const promptEvent = deferredInstallPrompt;
-        deferredInstallPrompt = null;
-        closeAddHomeModal();
-        try {
-          promptEvent.prompt();
-          await promptEvent.userChoice;
-        } catch (err) {}
-        return;
-      }
-
-      document.getElementById("addHomeMsg").textContent =
-        "এখন ব্রাউজারের ওপরের মেনু (⋮) খুলে “Add to Home screen” বা “Install app”-এ চাপুন এবং অনুমতি দিন।";
-    }
-
-    // ==========================================
-    // ৩. হালকা সাউন্ড এফেক্ট
+    // ২. হালকা সাউন্ড এফেক্ট
     // ==========================================
     let audioCtx = null;
 
@@ -985,7 +926,7 @@
     }
 
     // ==========================================
-    // ৪. সেশন স্টেট ও হেল্পার ফাংশন
+    // ৩. সেশন স্টেট ও হেল্পার ফাংশন
     // ==========================================
     let allProducts = [];
     let currentCategory = null;
@@ -996,8 +937,9 @@
 
     let lbProduct = null;
     let lbOpenedFromHistory = false;
+    let viewPushedToHistory = false;
     let ignoreNextPopstate = false;
-    let exitPromptArmed = false;
+    let allowDirectExit = false;
 
     function toBengaliNumber(num) {
       const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
@@ -1085,7 +1027,7 @@
     }
 
     // ==========================================
-    // ৫. প্রোডাক্ট আইটেম তৈরি (খোপ ও বর্ডারহীন ওপেন ডিজাইন)
+    // ৪. প্রোডাক্ট আইটেম তৈরি (খোপ ও বর্ডারহীন ওপেন ডিজাইন)
     // ==========================================
     function createOpenProductElement(product, options = {}) {
       const { isPopularCard = false } = options;
@@ -1179,11 +1121,18 @@
     }
 
     // ==========================================
-    // ৬. বিভাগ, সবার পছন্দের ও ক্যাটালগ রেন্ডারিং
+    // ৫. বিভাগ, সবার পছন্দের ও ক্যাটালগ রেন্ডারিং
     // ==========================================
     function setHomeHeaderVisibility(isVisible) {
       document.getElementById("homeBanner").style.display = isVisible ? "block" : "none";
       document.getElementById("homeIntroStrip").style.display = isVisible ? "block" : "none";
+    }
+
+    function pushSubViewState() {
+      if (!viewPushedToHistory) {
+        history.pushState({ subView: true }, "");
+        viewPushedToHistory = true;
+      }
     }
 
     function renderCategories() {
@@ -1244,10 +1193,15 @@
       currentPriceFilter = PRICE_FILTERS[0];
       spotlightProduct = product;
 
+      pushSubViewState();
       setHomeHeaderVisibility(false);
       document.getElementById("categorySection").style.display = "none";
       document.getElementById("popularSection").style.display = "none";
-      document.getElementById("topBar").style.display = "flex";
+
+      const topBar = document.getElementById("topBar");
+      topBar.style.display = "flex";
+      topBar.classList.add("is-spotlight-mode");
+
       document.getElementById("productSection").style.display = "block";
 
       renderSpotlight();
@@ -1261,10 +1215,15 @@
       currentPriceFilter = PRICE_FILTERS[0];
       spotlightProduct = featuredProd;
 
+      pushSubViewState();
       setHomeHeaderVisibility(false);
       document.getElementById("categorySection").style.display = "none";
       document.getElementById("popularSection").style.display = "none";
-      document.getElementById("topBar").style.display = "flex";
+
+      const topBar = document.getElementById("topBar");
+      topBar.style.display = "flex";
+      topBar.classList.remove("is-spotlight-mode");
+
       document.getElementById("productSection").style.display = "block";
 
       renderSpotlight();
@@ -1284,6 +1243,11 @@
       box.style.display = "flex";
       box.innerHTML = "";
 
+      // সবার পছন্দের ভিউতে সেন্টারে বড় প্লেইন লোগো
+      const centerLogo = document.createElement("div");
+      centerLogo.className = "spotlight-logo-center";
+      centerLogo.innerHTML = `<img src="${CONFIG.logoFile}" alt="বন্দনা শাড়ি কুটির লোগো" onerror="this.style.display='none'" />`;
+
       const badge = document.createElement("div");
       badge.className = "spotlight-badge";
       badge.textContent = "★ সবার পছন্দের বাছাই করা ডিজাইন";
@@ -1292,6 +1256,7 @@
       inner.className = "spotlight-inner";
       inner.appendChild(createOpenProductElement(spotlightProduct, { isPopularCard: false }));
 
+      box.appendChild(centerLogo);
       box.appendChild(badge);
       box.appendChild(inner);
     }
@@ -1340,13 +1305,16 @@
       });
     }
 
-    function goBackStep() {
+    function applyHomeView() {
       currentCategory = null;
       spotlightProduct = null;
       currentPriceFilter = PRICE_FILTERS[0];
 
       setHomeHeaderVisibility(true);
-      document.getElementById("topBar").style.display = "none";
+      const topBar = document.getElementById("topBar");
+      topBar.style.display = "none";
+      topBar.classList.remove("is-spotlight-mode");
+
       document.getElementById("categorySection").style.display = "block";
       document.getElementById("spotlightSection").style.display = "none";
       document.getElementById("productSection").style.display = "none";
@@ -1356,8 +1324,20 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    function goBackStep(fromButton) {
+      if (fromButton && viewPushedToHistory) {
+        viewPushedToHistory = false;
+        ignoreNextPopstate = true;
+        applyHomeView();
+        history.back();
+        return;
+      }
+      viewPushedToHistory = false;
+      applyHomeView();
+    }
+
     // ==========================================
-    // ৭. সিলেকশন, সাউন্ড, ও ফিক্সড কার্ট বার
+    // ৬. সিলেকশন, সাউন্ড, ও ফিক্সড কার্ট বার
     // ==========================================
     function syncAllButtonsForSerial(serial) {
       const isSelected = selectedMap.has(serial);
@@ -1381,7 +1361,6 @@
 
       syncAllButtonsForSerial(product.serial);
       updateCartBar(wasEmpty && selectedMap.size === 1);
-      armExitGuardIfNeeded();
     }
 
     function updateCartBar(triggerFirstNotice) {
@@ -1414,7 +1393,7 @@
     }
 
     // ==========================================
-    // ৮. বড় করে দেখা (Lightbox) ও WhatsApp অর্ডার
+    // ৭. বড় করে দেখা (Lightbox) ও WhatsApp অর্ডার
     // ==========================================
     function openLightbox(product) {
       lbProduct = product;
@@ -1503,27 +1482,18 @@
     }
 
     // ==========================================
-    // ৯. এক্সিট গার্ড ও ব্যাক বাটন হ্যান্ডলিং
+    // ৮. ধাপে ধাপে Back বাটন ও এক্সিট লজিক
     // ==========================================
-    function armExitGuardIfNeeded() {
-      if (selectedMap.size > 0 && !exitPromptArmed) {
-        history.pushState({ exitGuard: true }, "");
-        exitPromptArmed = true;
-      }
-    }
-
     function stayOnSite() {
       document.getElementById("exitModal").classList.remove("open");
-      if (selectedMap.size > 0 && !exitPromptArmed) {
-        history.pushState({ exitGuard: true }, "");
-        exitPromptArmed = true;
-      }
+      allowDirectExit = false;
     }
 
     function confirmLeaveSite() {
       document.getElementById("exitModal").classList.remove("open");
       selectedMap.clear();
-      exitPromptArmed = false;
+      updateCartBar(false);
+      allowDirectExit = true;
       history.back();
     }
 
@@ -1533,6 +1503,11 @@
         return;
       }
 
+      if (allowDirectExit) {
+        return;
+      }
+
+      // ১. Lightbox খোলা থাকলে প্রথমে সেটি বন্ধ হবে
       const lb = document.getElementById("lightbox");
       if (lb.classList.contains("open")) {
         lbOpenedFromHistory = false;
@@ -1540,21 +1515,28 @@
         return;
       }
 
+      // ২. কোনো বিভাগ বা সবার পছন্দের ভিউতে থাকলে হোমপেজে ফিরে আসবে
+      if (currentCategory || spotlightProduct) {
+        viewPushedToHistory = false;
+        applyHomeView();
+        return;
+      }
+
+      // ৩. হোমপেজে থাকলে: সিলেক্ট করা থাকলে সতর্কবার্তা দেখাবে, না থাকলে স্বাভাবিক ব্যাক হবে
       if (selectedMap.size > 0) {
-        exitPromptArmed = false;
         document.getElementById("exitModal").classList.add("open");
       }
     });
 
     window.addEventListener("beforeunload", (e) => {
-      if (selectedMap.size > 0) {
+      if (!allowDirectExit && selectedMap.size > 0) {
         e.preventDefault();
         e.returnValue = "";
       }
     });
 
     // ==========================================
-    // ১০. Google Sheet CSV পার্সার
+    // ৯. Google Sheet CSV পার্সার
     // ==========================================
     function parseCsvLine(line) {
       const result = [];
